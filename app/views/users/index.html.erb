@@ -2,7 +2,9 @@
 <% @users.each do |user| %>
 <ul>
   <li>
-    <%= image_tag "" %>
+    <% if user.image %>
+      <%= image_tag "/user_images/#{user.image}", width: "100px" %>
+    <% end %>  <!--デフォルト設定したので、みんなが画像をもてたらけす -->
     <%= link_to user.name, user_path(user) %>
   </li>    
 </ul>

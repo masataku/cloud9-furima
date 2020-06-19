@@ -15,6 +15,14 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.point = 10000
+    img = user_params[:image]
+    if !img.nil?
+      @user.image = img.original_filename
+      
+      File.binwrite("public/user_images/#{@user.image}", img.read)
+    else
+      @user.image = "elephant.jpg"
+    end  
     if @user.save
       redirect_to user_path(@user), notice: "登録できました"
     else
@@ -28,6 +36,7 @@ class UsersController < ApplicationController
   
   def update
     @user = User.find(params[:id])
+    
     @user.update(user_params)
     redirect_to user_path(@user), notice: "編集しました"
   end  

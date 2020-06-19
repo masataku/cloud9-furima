@@ -1,3 +1,18 @@
 <h1>情報の編集</h1>
-<%= render 'form' %>
+<%= form_for @user do |f| %>
+  <%= f.label :image, "画像" %>
+  <%= f.file_field :image %>
+
+  <%= f.label :name, "ユーザー名" %>
+  <%= f.text_field :name %>
+  
+  <%= f.label :email, "メールアドレス" %>
+  <%= f.text_field :email %>
+  
+  <%= f.label :text, "自己紹介" %>
+  <%= f.text_area :text %>
+  
+  <%= f.submit "編集" %>
+  
+<% end %>
 <%= link_to "戻る", user_path(@user) %>

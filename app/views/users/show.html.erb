@@ -1,5 +1,7 @@
 id.<%= @user.id %>のユーザー
-<p>画像：</p>
+<% if @user.image %>
+<p><%= image_tag "/user_images/#{@user.image}", width: "300px" %></p>
+<% end %>
 <p>ユーザー名：<%= @user.name %></p>
 <p>メールアドレス：<%= @user.email %></p>
 <p>ポイント：<%= @user.point %>P</p>
