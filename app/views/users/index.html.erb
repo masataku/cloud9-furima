@@ -1,4 +1,9 @@
 <h1>ユーザー一覧</h1>
-ユーザー１
-ユーザー２
-ユーザー３
+<% @users.each do |user| %>
+<ul>
+  <li>
+    <%= image_tag "" %>
+    <%= link_to user.name, user_path(user) %>
+  </li>    
+</ul>
+<% end %>
