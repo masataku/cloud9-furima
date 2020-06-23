@@ -1,2 +1,7 @@
 <h1>新規登録</h1>
+<% if @user.errors.any? %>
+  <% @user.errors.full_messages.each do |message| %>
+    <p><%= message %></p>
+  <% end %>
+<% end %>  
 <%= render 'form' %>

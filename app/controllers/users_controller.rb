@@ -62,7 +62,7 @@ class UsersController < ApplicationController
   end
   
   def login_form
-    
+    @user = User.new(email: "", password: "")
   end  
   
   def login
@@ -70,7 +70,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to user_path(@user), notice: "ログインしました"
     else
-      render 'login_form'
+      redirect_to users_login_path, notice: "メールアドレスか、パスワードが間違っています"
     end  
   end  
   
