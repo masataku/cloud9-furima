@@ -1,6 +1,6 @@
-id.<%= @user.id %>のユーザー
+
 <% if @user.image %>
-<p><%= image_tag "/user_images/#{@user.image}", width: "300px" %></p>
+  <p><%= image_tag "/user_images/#{@user.image}", width: "300px" %></p>
 <% end %>
 <p>ユーザー名：<%= @user.name %></p>
 <p>メールアドレス：<%= @user.email %></p>

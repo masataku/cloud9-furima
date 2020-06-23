@@ -36,9 +36,18 @@ class UsersController < ApplicationController
   
   def update
     @user = User.find(params[:id])
-    
-    @user.update(user_params)
-    redirect_to user_path(@user), notice: "編集しました"
+    img = user_params[:image]
+    if !img.nil?
+      if  @user.image != img.original_filename
+        File.binwrite("public/user_images/#{img.original_filename}", img.read)
+      end 
+    end
+    if @user.update(user_params)
+      
+      redirect_to user_path(@user), notice: "編集しました"
+    else
+      render 'edit'
+    end  
   end  
   
   def destroy
@@ -52,11 +61,16 @@ class UsersController < ApplicationController
   end  
   
   def login
-    @user = User.find_by(user_params)
-    redirect_to user_path(@user), notice: "ログインしました"
+    if @user = User.find_by(user_params)
+      session[:user_id] = @user.id
+      redirect_to user_path(@user), notice: "ログインしました"
+    else
+      render 'login_form'
+    end  
   end  
   
   def logout
+    session[:user_id] = nil
     redirect_to users_login_path, notice: "ログアウトしました"
   end  
   
