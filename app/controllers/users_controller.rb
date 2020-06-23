@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user, {only: [:index, :show, :edit, :update, :destroy, :logout]}
+  before_action :forbid_login_user, {only: [:new, :create, :login_form, :login]}
+  before_action :ensure_correct_user, {only: [:edit, :updte, :destroy]}
+  
   def index
-    @users = User.all
+    @users = User.all.order(id: :desc)
     
   end  
   
@@ -24,6 +28,7 @@ class UsersController < ApplicationController
       @user.image = "elephant.jpg"
     end  
     if @user.save
+      session[:user_id] = @user.id
       redirect_to user_path(@user), notice: "登録できました"
     else
       render "new"
@@ -71,7 +76,7 @@ class UsersController < ApplicationController
   
   def logout
     session[:user_id] = nil
-    redirect_to users_login_path, notice: "ログアウトしました"
+    redirect_to root_path, notice: "ログアウトしました"
   end  
   
   def user_params

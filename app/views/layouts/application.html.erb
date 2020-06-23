@@ -10,16 +10,17 @@
 
   <body>
     <header>
-      <h2><%= link_to "mercari", root_path %></h2>
       <% if @current_user %>
-        <%= link_to @current_user.name, user_path(@current_user) %>
+        <h2><%= link_to "mercari", users_path %></h2>
+        <%= link_to "マイページ", user_path(@current_user) %>
+        <%= link_to "ユーザー一覧", users_path %>
+        <%= link_to "ログアウト", users_logout_path %>
+      <% else %>
+        <h2><%= link_to "mercari", root_path %></h2>
+        <%= link_to "新規登録", new_user_path %>
+        <%= link_to "ログイン", users_login_path %>
       <% end %>
-        
-      <%= link_to "新規登録", new_user_path %>
-      <%= link_to "ログイン", users_login_path %>
-      <%= link_to "ログアウト", users_logout_path %>
-      <%= link_to "ユーザー一覧", users_path %>
-      <%= notice %>
+      <p><%= notice %></p>
     </header>
     <%= yield %>
   </body>

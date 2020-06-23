@@ -1,15 +1,27 @@
+<% if @user.id == @current_user.id %>
+  <h2>マイページ</h2>
+<% else %>
+  <h2><%= @user.name %>さん</h2>
+<% end %> 
 
 <% if @user.image %>
   <p><%= image_tag "/user_images/#{@user.image}", width: "300px" %></p>
 <% end %>
+
 <p>ユーザー名：<%= @user.name %></p>
 <p>メールアドレス：<%= @user.email %></p>
 <p>ポイント：<%= @user.point %>P</p>
 <p>自己紹介：<%= @user.text %></p>
-<%= link_to "情報の編集", edit_user_path(@user) %>
+
+<% if @user.id == @current_user.id %>
+  <%= link_to "情報の編集", edit_user_path(@user) %>
+<% end %>  
+
 ・出品一覧・いいね一覧・購入一覧
 <h2>出品する</h2>
 <h2>買いに行く</h2>
-<%= link_to "退会する", user_path(@user), method: :delete, data: {confirm: "ポイント：#{@user.point}Pは消えてしまいます。本当に退会しますか？"} %>
 
+<% if @user.id == @current_user.id %>
+  <%= link_to "退会する", user_path(@user), method: :delete, data: {confirm: "ポイント：#{@user.point}Pは消えてしまいます。本当に退会しますか？"} %>
+<% end %>
 
