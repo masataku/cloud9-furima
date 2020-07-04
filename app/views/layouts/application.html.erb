@@ -20,7 +20,8 @@
         <%= link_to "新規登録", new_user_path %>
         <%= link_to "ログイン", users_login_path %>
       <% end %>
-      <p><%= notice %></p>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
     </header>
     <%= yield %>
   </body>
