@@ -42,12 +42,16 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     img = user_params[:image]
-    if !img.nil?
-      if  @user.image != img.original_filename
-        File.binwrite("public/user_images/#{img.original_filename}", img.read)
-      end 
-    end
+    
     if @user.update(user_params)
+      if !img.nil?
+       
+        if  @user.image != img.original_filename
+          @user.image = img.original_filename
+          File.binwrite("public/user_images/#{img.original_filename}", img.read)
+        end 
+        @user.save
+      end
       
       redirect_to user_path(@user), notice: "編集しました"
     else
@@ -62,7 +66,7 @@ class UsersController < ApplicationController
   end
   
   def login_form
-    @user = User.new(email: "", password: "")
+    @user = User.new
   end  
   
   def login
@@ -70,7 +74,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to user_path(@user), notice: "ログインしました"
     else
-      redirect_to users_login_path, notice: "メールアドレスか、パスワードが間違っています"
+      redirect_to users_login_path, notice: "メールアドレスかパスワードが間違っています"
     end  
   end  
   
