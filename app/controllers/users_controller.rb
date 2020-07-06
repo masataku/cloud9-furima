@@ -61,7 +61,9 @@ class UsersController < ApplicationController
   
   def destroy
     @user = User.find(params[:id])
-    @user.destroy
+    items = @user.saling_items
+    @user.destroy 
+    items.destroy_all
     redirect_to root_path, notice: "退会しました"
   end
   

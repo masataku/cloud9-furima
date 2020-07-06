@@ -14,6 +14,8 @@
         <h2><%= link_to "mercari", users_path %></h2>
         <%= link_to "マイページ", user_path(@current_user) %>
         <%= link_to "ユーザー一覧", users_path %>
+        <%= link_to "商品一覧", items_path %>
+        <%= link_to "出品する", new_item_path %>
         <%= link_to "ログアウト", users_logout_path, method: :post %>
       <% else %>
         <h2><%= link_to "mercari", root_path %></h2>

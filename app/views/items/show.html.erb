@@ -1,0 +1,28 @@
+
+<h1>商品ページ</h1>
+
+<p>
+  
+  <%= image_tag "/item_images/#{@item.image}", width: "300px" %>
+  
+  <ul>
+    <li>状態：<%= @item.state %></li>
+    <li>発送地：<%= @item.region %></li>
+    <li>日数：<%= @item.shipping_date %></li>
+  </ul>
+  
+</p>
+<h3><%= @item.name %></h3><br/>
+<%= @item.text %><br/>
+<h3>価格<%= @item.price %>円</h3>
+<%= @item.saler.name %>
+<% if @item.saler == @current_user %>
+  <%= link_to "商品編集", edit_item_path(@item) %>
+  <%= link_to "この商品を削除する", item_path(@item), method: :delete, data:{confirm: "削除すると二度と復活できません。本当に削除しますか？"} %>
+<% end %>
+
+<% if @current_user == @item.saler %>
+  <h3><%= link_to "商品一覧", items_path %></h3>
+<% else %>  
+  <h3><%= link_to "購入する", "" %>・商品一覧</h3>
+<% end %>

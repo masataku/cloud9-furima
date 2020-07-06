@@ -21,7 +21,23 @@ class ApplicationController < ActionController::Base
   
   def ensure_correct_user
     if @current_user.id != params[:id].to_i
-      redirect_to users_path, notice: "アクセスできません"
+      redirect_to users_path, notice: "権限がありません"
     end  
   end
+  
+  def ensure_correct_user_of_item
+    if Item.exists?(params[:id])
+      item = Item.find(params[:id]) 
+      if @current_user.id != item.saler_id
+        redirect_to items_path, notice: "権限がありません"
+      else
+        return
+      end
+      
+    else
+      redirect_to items_path, notice: "権限がありません"
+    end  
+  end 
+  
+ 
 end

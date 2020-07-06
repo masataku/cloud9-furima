@@ -1,0 +1,9 @@
+<% @items.each do |item| %>
+  <%= item.id %>
+<p>
+  <%= image_tag "/item_images/#{item.image}", width: "150px" %><br />
+  <%= item.name %><br />
+  <%= item.price %>円
+  <%= link_to "見る", item_path(item) %>
+</p>  
+<% end %>
