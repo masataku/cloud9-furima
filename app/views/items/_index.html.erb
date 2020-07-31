@@ -1,6 +1,9 @@
 <% @items.each do |item| %>
   <%= item.id %>
 <p>
+  <% if item.buyer %>
+    <h3>SOLD OUT!</h3>
+  <% end %>
   <%= image_tag "/item_images/#{item.image}", width: "150px" %><br />
   <%= item.name %><br />
   <%= item.price %>円

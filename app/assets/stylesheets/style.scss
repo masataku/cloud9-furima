@@ -1,0 +1,59 @@
+.content {
+  min-height: 700px;
+}
+
+footer {
+    background: #333333;
+    color: white;
+    padding: 2rem 0;
+    
+} 
+body {
+  background: #f8f8f8;
+}
+
+
+.text-body {
+  position: relative;
+}
+
+.text {
+  position: absolute;
+  top: 0;
+  background: gray;
+  height: 2rem;
+  font-size: 1rem;
+}
+
+.row-eq-height {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#display-btn {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+.display-btn {
+  margin-left: 1000px;
+  display: inline-block;
+  position: relative;
+  
+  text-decoration: none;
+  background: red;
+  color: white;
+  width: 12em;
+  height: 12em;
+  border-radius: 50%;
+  text-align: center;
+  over-flow: hidden; div {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+}
+}
+
+

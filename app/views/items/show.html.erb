@@ -1,28 +1,84 @@
-
-<h1>商品ページ</h1>
-
-<p>
+<div id="page-wrapper">
+  <h2>商品ページ</h2>
+  <div class="page-container">
+    <div class="page">
+      <div class="item-name">
+        <h3><%= @item.name %></h3><br/>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+        <% if @item.buyer %>
+          <h2>SOLD OUT!</h2>
+        <% end %>
+        <%= image_tag "/item_images/#{@item.image}", width: "300px" %>
+        </div>
+        
+        <div class="col-md-6 item-info">
+          
+          
+          <table border="1">
+            <tr>
+              <th>出品者</th>
+              <td><%= link_to @item.saler.name, @item.saler %></td>
+            </tr>
+            
+            <tr>
+              <th>商品の状態</th>
+              <td><%= @item.state %></td>
+            </tr>
+            
+            <tr>
+              <th>配送料の負担</th>
+              <td><%= @item.shipping_charge %></td>
+            </tr>
+            
+            <tr>
+              <th>配送の方法</th>
+              <td><%= @item.shipping_method %></td>
+            </tr>
+            
+            <tr>
+              <th>発送元地域</th>
+              <td><%= @item.region %></td>
+            </tr>
+            
+            <tr>
+              <th>発送日の目安</th>
+              <td><%= @item.shipping_date %></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      
+      <br>
+      
+      <div class="item-price-info">
+        <strong class="item-price">¥<%= @item.price %></strong>
+      　<% if @item.shipping_charge == "送料込み(出品者負担)" %>
+        送料込み
+        <% end %>
+      </div><br>
+      
+      <div class="item-text">
+        <%= simple_format(@item.text) %><br/>
+      </div>
+      
+      <div class="like">
+        <%= render "items/like" %>
+      </div>
+    </div>
+  </div>
   
-  <%= image_tag "/item_images/#{@item.image}", width: "300px" %>
   
-  <ul>
-    <li>状態：<%= @item.state %></li>
-    <li>発送地：<%= @item.region %></li>
-    <li>日数：<%= @item.shipping_date %></li>
-  </ul>
+  <div class="page-container">
+    <div class="page">
+    <% if @item.saler == @current_user %>
+      <%= link_to "商品編集", edit_item_path(@item), class: "btn btn-danger btn-lg btn-block" %>
+      <%= link_to "この商品を削除する", item_path(@item), method: :delete, data:{confirm: "削除すると二度と復活できません。本当に削除しますか？"}, class: "btn btn-secondary btn-lg btn-block" %>
+    <% else %>  
+      <h3><%= link_to "購入する", "/items/#{@item.id}/buyed", data: {confirm: "#{@item.price}P消費されます。本当に購入しますか？"} %>・商品一覧</h3>
+    <% end %>
+    </div>
+  </div>  
   
-</p>
-<h3><%= @item.name %></h3><br/>
-<%= @item.text %><br/>
-<h3>価格<%= @item.price %>円</h3>
-<%= @item.saler.name %>
-<% if @item.saler == @current_user %>
-  <%= link_to "商品編集", edit_item_path(@item) %>
-  <%= link_to "この商品を削除する", item_path(@item), method: :delete, data:{confirm: "削除すると二度と復活できません。本当に削除しますか？"} %>
-<% end %>
-
-<% if @current_user == @item.saler %>
-  <h3><%= link_to "商品一覧", items_path %></h3>
-<% else %>  
-  <h3><%= link_to "購入する", "" %>・商品一覧</h3>
-<% end %>
+</div>

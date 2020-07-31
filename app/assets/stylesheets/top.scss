@@ -1,3 +1,54 @@
 // Place all the styles related to the top controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.alert {
+  text-align: center;
+}
+
+.hero {
+  background-image: url("rectangle_large_type_2_46ffcfccf4f8a9fb448290dafd69d2c1.jpg");
+}
+
+.jambotron {
+  padding: 6rem 2rem;
+}
+
+.row-eq-height {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#top-wrapper{
+  h1 {
+    padding-top: 20px;
+    opacity: 0.6;
+    text-align: center;
+  }
+  .top-items {
+    padding: 100px 80px; .items-box {
+                            margin-bottom: 20px; .item-card {
+                                                  height: 100%;
+                                                  box-shadow: 3px 3px 16px 1px gray; .card-img-top {
+                                                                                        position: relative;
+                                                                                        // height: 70%;
+                                                                                      }
+                                                                                      .card-price {
+                                                                                        position: absolute;
+                                                                                        bottom: 0;
+                                                                                        left: 0;
+                                                                                        background: rgba(0,0,0,0.4);
+                                                                                        color: white;
+                                                                                        padding: 2px 8px;
+                                                                                        border-radius: 0 15px 15px 0;
+                                                                                      }  
+                                                }
+                                               .item-link {
+                                                 text-decoration: none;
+                                               }  
+
+                          }
+  }
+}
+
+

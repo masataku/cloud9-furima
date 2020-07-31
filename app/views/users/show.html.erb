@@ -17,11 +17,12 @@
   <%= link_to "情報の編集", edit_user_path(@user) %>
 <% end %>  
 
-・<%= link_to "出品一覧", "/items/#{@user.id}/saler_index" %>・いいね一覧・購入一覧
-<h2><%= link_to "出品する", new_item_path %></h2>
-<h2>買いに行く</h2>
+・<%= link_to "出品一覧", "/items/#{@user.id}/saling_index" %>・<%= link_to "売却一覧", "/items/#{@user.id}/sold_index" %>・いいね一覧・購入一覧
+
+
 
 <% if @user.id == @current_user.id %>
   <%= link_to "退会する", user_path(@user), method: :delete, data: {confirm: "ポイント：#{@user.point}Pは消えてしまいます。本当に退会しますか？"} %>
 <% end %>
 
+<%= render 'display_btn' %>

@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user
   before_action :ensure_correct_user_of_item, {only:[:edit, :update, :destroy]}
-  
+  before_action :set_item, {only: [:show, :edit, :update, :destroy]}
   
   
   def index
@@ -10,7 +10,7 @@ class ItemsController < ApplicationController
   
   
   def show
-    @item = Item.find(params[:id])
+    @like = @current_user.likes.find_or_initialize_by(item: @item)
   end
   
   
@@ -37,12 +37,11 @@ class ItemsController < ApplicationController
   
   
   def edit
-    @item = Item.find(params[:id])
+
   end  
   
   
   def update
-    @item = Item.find(params[:id])
     img = item_params[:image]
     
     if @item.update(item_params)
@@ -63,18 +62,38 @@ class ItemsController < ApplicationController
   
   
   def destroy
-    @item = Item.find(params[:id])
     @item.destroy
-    redirect_to "/items/#{@current_user.id}/saler_index", notice: "商品を削除しました"
+    redirect_to "/items/#{@current_user.id}/saling_index", notice: "商品を削除しました"
   end
   
   
-  def saler_index
-    @items = Item.where(saler_id: params[:id])
+  
+  
+  def saling_index
+    @user = User.find(params[:id])
+    @items = @user.saling_items
   end  
   
   
+  def sold_index
+    @user = User.find(params[:id])
+    @items = @user.sold_items
+  end
+  
+  def buyed
+    @item.buyer = @current_user
+    @item.save
+    redirect_to item_path(@item), notice: "購入しました"
+  end
+  
+  
+  private
+  
   def item_params
-    params.require(:item).permit(:image, :name, :text, :price, :state, :region, :shipping_date)
+    params.require(:item).permit(:image, :name, :text, :price, :state, :region, :shipping_date, :shipping_method, :shipping_charge, :buyer_id)
+  end  
+  
+  def set_item
+    @item = Item.find(params[:id])
   end  
 end

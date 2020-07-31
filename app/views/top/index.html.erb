@@ -1,10 +1,44 @@
-<header>
-  <h1>メルカリ</h1>
-</header>
-<body>
-  <h2>フリマサイトです</h2>
-  <p>不要なものを出品して売りましょう</p>
-</body>
-<footer>
-  mercari
-</footer>
+<div id="top-wrapper">
+  <div class="container">
+    <h1>新着アイテム</h1>
+    <div class="top-items row row-eq-height">
+      <% @items.each do |item| %>
+      <div class="col-sm-3 items-box">
+        
+        <%= link_to item, {class: "item-link"} do %>
+        <div class="card item-card">
+          <div class="card-img-top">
+            <%= image_tag "/item_images/#{item.image}", class: "card-img-top img-fluid h-100" %>
+            <div class="card-price">
+              ¥<%= item.price %>
+            </div>
+        
+          </div>　
+        　
+          
+           
+           
+          <div class="card-body text-center">
+            <div class="card-title">
+              商品名：<%= item.name %>
+            </div>
+            <div class="card-text">
+              <%= item.text %>
+            </div>
+          </div>
+            
+          
+        </div>
+        <% end %>
+        
+      </div>  
+      <% end %>
+    </div>
+  
+    
+  <%= render 'display_btn' %>
+    
+    
+  </div> 
+</div>
+

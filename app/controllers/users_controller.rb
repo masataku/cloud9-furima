@@ -2,14 +2,14 @@ class UsersController < ApplicationController
   before_action :authenticate_user, {only: [:index, :show, :edit, :update, :destroy, :logout]}
   before_action :forbid_login_user, {only: [:new, :create, :login_form, :login]}
   before_action :ensure_correct_user, {only: [:edit, :updte, :destroy]}
-  
+  before_action :set_user, {only: [:show, :edit, :update, :destroy]}
   def index
     @users = User.all.order(id: :desc)
     
   end  
   
   def show
-    @user = User.find(params[:id])
+    
   end  
   
   def new
@@ -36,11 +36,11 @@ class UsersController < ApplicationController
   end
   
   def edit
-    @user = User.find(params[:id])
+    
   end
   
   def update
-    @user = User.find(params[:id])
+    
     img = user_params[:image]
     
     if @user.update(user_params)
@@ -60,7 +60,6 @@ class UsersController < ApplicationController
   end  
   
   def destroy
-    @user = User.find(params[:id])
     items = @user.saling_items
     @user.destroy 
     items.destroy_all
@@ -85,7 +84,14 @@ class UsersController < ApplicationController
     redirect_to root_path, notice: "ログアウトしました"
   end  
   
+  
+  private
+  
   def user_params
     params.require(:user).permit(:name, :email, :text, :password, :image)
+  end  
+  
+  def set_user
+    @user = User.find(params[:id])
   end  
 end  

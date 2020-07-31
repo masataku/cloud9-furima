@@ -10,31 +10,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200706100955) do
+ActiveRecord::Schema.define(version: 20200726085631) do
 
   create_table "items", force: :cascade do |t|
-    t.string   "name"
-    t.text     "text"
-    t.integer  "price"
-    t.string   "image"
-    t.string   "state"
-    t.string   "region"
-    t.integer  "saler_id"
-    t.integer  "buyer_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.string   "shipping_date"
+    t.string "name"
+    t.text "text"
+    t.integer "price"
+    t.string "image"
+    t.string "state"
+    t.string "region"
+    t.integer "saler_id"
+    t.integer "buyer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "shipping_date"
+    t.string "shipping_method"
+    t.string "shipping_charge"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_likes_on_item_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "image"
-    t.text     "text"
-    t.integer  "point"
+    t.string "name"
+    t.string "email"
+    t.string "image"
+    t.text "text"
+    t.integer "point"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "password"
+    t.string "password"
   end
 
 end

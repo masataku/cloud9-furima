@@ -1,0 +1,9 @@
+<% if @like.new_record? %>
+  <%= button_to [@item, @like], {class: "btn btn-secondary", remote: :true} do %>
+    <%= fa_icon "heart" %>いいね！<%= @item.likes.count %>
+  <% end %>  
+<% else %>
+  <%= button_to [@item, @like], {method: :delete, class: "btn btn-danger", remote: :true} do %>
+    <%= fa_icon "heart" %>いいね！<%= @item.likes.count %>
+  <% end %>  
+<% end %>

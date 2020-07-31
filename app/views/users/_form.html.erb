@@ -1,21 +1,61 @@
-<%= form_for @user do |f| %>
-
-  <p>
-    <%= f.label :image, "画像" %><br>
-    <%= f.file_field :image %>
-  </p>
-  <p>
-    <%= f.label :name, "ユーザー名" %><br>
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :email, "メールアドレス" %><br>
-    <%= f.text_field :email %>
-  </p>
-  <p>
-    <%= f.label :password, "パスワード" %><br>
-    <%= f.password_field :password %>
-  </p>
-  <%= f.submit "登録する" %>
-  
-<% end %>
+<div id="page-wrapper">
+  <% if @user.new_record? %>
+      <h2>新規登録</h2>
+    <% else %>
+      <h1>情報の編集</h1>
+    <% end %>  
+  <div class="page-container">
+    <div class="page">
+    <%= form_for @user do |f| %>
+    
+      <div class="form-group">
+        <%= f.label :image, "画像" %><br>
+        <%= f.file_field :image, class: "form-control-file" %>
+      </div><br>
+      
+      <div class="form-group">
+        <%= f.label :name, "ユーザー名" %><br>
+        <%= f.text_field :name, class: "form-control", placeholder: "名前を入力してください" %>
+        <% if @user.errors.include?(:name) %>
+          <%= @user.errors.full_messages_for(:name).first %>
+        <% end %>  
+      </div><br>
+      
+      <div class="form-group">
+        <%= f.label :email, "メールアドレス" %><br>
+        <%= f.text_field :email, class: "form-control", placeholder: "メールアドレスを入力してください" %>
+        <% if @user.errors.include?(:email) %>
+          <%= @user.errors.full_messages_for(:email).first %>
+        <% end %>  
+      </div><br>
+      
+      <% unless @user.new_record? %>
+      <div class="form-group">
+        <%= f.label :text, "自己紹介" %><br>
+        <%= f.text_area :text, class: "form-control", placeholder: "自己紹介文を書こう" %>
+        <% if @user.errors.include?(:text) %>
+          <%= @user.errors.full_messages_for(:text).first %>
+        <% end %>  
+      </div><br>
+      <% end %>
+      
+      <% if @user.new_record? %>
+      <div class="form-group">
+        <%= f.label :password, "パスワード" %><br>
+        <%= f.password_field :password, class: "form-control", placeholder: "パスワードを入力してください" %>
+        <% if @user.errors.include?(:password) %>
+          <%= @user.errors.full_messages_for(:password).first %>
+        <% end %>  
+      </div>
+      
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input">
+        <label class="form-check-label">パスワードを表示</label>
+      </div><br><br>
+      <% end %>
+      <%= f.submit @user.new_record? ? "登録する" : "変更する", class: "btn btn-success btn-lg btn-block" %>
+      
+    <% end %> 
+    </div>
+  </div>
+</div>
