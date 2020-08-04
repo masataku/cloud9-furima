@@ -3,7 +3,7 @@
     <h1>新着アイテム</h1>
     <div class="top-items row row-eq-height">
       <% @items.each do |item| %>
-      <div class="col-sm-3 items-box">
+      <div class="col-md-3 items-box">
         
         <%= link_to item, {class: "item-link"} do %>
         <div class="card item-card">
@@ -20,10 +20,7 @@
            
           <div class="card-body text-center">
             <div class="card-title">
-              商品名：<%= item.name %>
-            </div>
-            <div class="card-text">
-              <%= item.text %>
+              <%= item.name %>
             </div>
           </div>
             
@@ -36,7 +33,7 @@
     </div>
   
     
-  <%= render 'display_btn' %>
+  <%= render 'shared/display_btn' %>
     
     
   </div> 

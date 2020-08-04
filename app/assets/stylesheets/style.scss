@@ -33,27 +33,56 @@ body {
 #display-btn {
   position: fixed;
   bottom: 40px;
-  right: 40px;
-.display-btn {
-  margin-left: 1000px;
-  display: inline-block;
-  position: relative;
-  
-  text-decoration: none;
-  background: red;
-  color: white;
-  width: 12em;
-  height: 12em;
-  border-radius: 50%;
-  text-align: center;
-  over-flow: hidden; div {
-    position: absolute;
-    top: 40px;
-    right: 0;
-    bottom: 0;
-    left: 0;
-  }
-}
+  right: 40px; .display-btn {
+                  margin-left: 1000px;
+                  display: inline-block;
+                  position: relative;
+                  text-decoration: none;
+                  background: red;
+                  color: white;
+                  width: 10em;
+                  height: 10em;
+                  border-radius: 50%;
+                  text-align: center;
+                  over-flow: hidden; div {
+                                      position: absolute;
+                                      top: 28px;
+                                      right: 0;
+                                      bottom: 0;
+                                      left: 0;
+                                     }
+               }
 }
 
 
+li {
+  list-style: none;
+}
+
+.box-1{
+  table {
+    width: 100%;
+    tr{ 
+      background: green;
+      position: relative;
+      th {
+        display: inline-block;
+        position: absolute;
+        top: fixed;
+        left: 35px;
+      }
+        
+    td {
+      display: inline-block;
+      background: red;
+      position: absolute;
+      top: fixed;
+      right: 35px;
+    }
+    }
+  }  
+}
+
+.right-icon {
+  text-align: right;
+}

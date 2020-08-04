@@ -4,25 +4,59 @@
   <h2><%= @user.name %>さん</h2><%= @user.id %>
 <% end %> 
 
-<% if @user.image %>
-  <p><%= image_tag "/user_images/#{@user.image}", width: "300px" %></p>
-<% end %>
 
-<p>ユーザー名：<%= @user.name %></p>
-<p>メールアドレス：<%= @user.email %></p>
-<p>ポイント：<%= @user.point %>P</p>
-<p>自己紹介：<%= @user.text %></p>
+<div class="container">
+  <div class="user-box">
+    <div class="row">
+      
+      
+      <div class="col-sm-4">
+        <div class="box-1">
+          <table border="1">
+            <tr><th>マイページ</th><td><%= fa_icon "chevron-right", class: "right-icon" %></td></tr>
+            <tr><th>お知らせ</th><td></td></tr>
+            <tr><th>やることリスト</th></tr>
+            <tr><th>いいね一覧</th></tr>
+            <tr><th>出品する</th></tr>
+            <tr><th>出品した商品-出品中</th></tr>
+            <tr><th>出品した商品-取引中</th></tr>
+            <tr><th>出品した商品-売却済み</th></tr>
+            <tr><th>購入した商品-取引中</th></tr>
+            <tr><th>購入した商品-過去の取引</th></tr>
+          </table>
+        </div>
+      </div>
+      
+      
+      
+      <div class="col-sm-8">
+        <div class="box-2">
+          <% if @user.image %>
+            <p><%= image_tag "/user_images/#{@user.image}", width: "300px" %></p>
+          <% end %>
+          
+          <p>ユーザー名：<%= @user.name %></p>
+          <p>メールアドレス：<%= @user.email %></p>
+          <p>ポイント：<%= @user.point %>P</p>
+          <p>自己紹介：<%= @user.text %></p>
+          
+          <% if @user.id == @current_user.id %>
+            <%= link_to "情報の編集", edit_user_path(@user) %>
+          <% end %>  
+          
+          ・<%= link_to "出品一覧", "/items/#{@user.id}/saling_index" %>・<%= link_to "売却一覧", "/items/#{@user.id}/sold_index" %>・いいね一覧・購入一覧
+          
+          
+          
+          <% if @user.id == @current_user.id %>
+            <%= link_to "退会する", user_path(@user), method: :delete, data: {confirm: "ポイント：#{@user.point}Pは消えてしまいます。本当に退会しますか？"} %>
+          <% end %>
+        </div>
+      </div>
+      
+    </div> 
+  </div>
+</div>
 
-<% if @user.id == @current_user.id %>
-  <%= link_to "情報の編集", edit_user_path(@user) %>
-<% end %>  
 
-・<%= link_to "出品一覧", "/items/#{@user.id}/saling_index" %>・<%= link_to "売却一覧", "/items/#{@user.id}/sold_index" %>・いいね一覧・購入一覧
-
-
-
-<% if @user.id == @current_user.id %>
-  <%= link_to "退会する", user_path(@user), method: :delete, data: {confirm: "ポイント：#{@user.point}Pは消えてしまいます。本当に退会しますか？"} %>
-<% end %>
-
-<%= render 'display_btn' %>
+<%= render 'shared/display_btn' %>

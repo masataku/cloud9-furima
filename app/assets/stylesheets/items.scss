@@ -26,3 +26,21 @@
 } th {
   background: #f8f8f8;
 }
+
+
+//item_show
+
+.item-box {
+  .item-image {
+    position: relative;
+    
+  }
+  h2 {
+    position: absolute;
+    top: 120px;
+    right: 0;
+    left: 0;
+    
+    color: red;
+  }
+}
