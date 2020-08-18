@@ -1,9 +1,17 @@
 <% if @like.new_record? %>
-  <%= button_to [@item, @like], {class: "btn btn-secondary", remote: :true} do %>
-    <%= fa_icon "heart" %>いいね！<%= @item.likes.count %>
+  <%= button_to [@item, @like], {class: "like-btn btn-like", remote: :true} do %>
+    <span class="like-icon"><%= fa_icon "heart" %></span>&nbsp;<span class="like-text">いいね！</span>&nbsp;<span class="like-count"><%= @item.likes.count %></span>
   <% end %>  
 <% else %>
-  <%= button_to [@item, @like], {method: :delete, class: "btn btn-danger", remote: :true} do %>
-    <%= fa_icon "heart" %>いいね！<%= @item.likes.count %>
+  <%= button_to [@item, @like], {method: :delete, class: "like-btn btn-unlike", remote: :true} do %>
+    <span class="like-icon"><%= fa_icon "heart" %></span>&nbsp;<span class="like-text">いいね！</span>&nbsp;<span class="like-count"><%= @item.likes.count %></span>
   <% end %>  
 <% end %>
+
+<script>
+  $(function(){
+    $(".like-count").hide();
+    $(".like-count").slideDown('fast');  
+    
+  });
+</script>

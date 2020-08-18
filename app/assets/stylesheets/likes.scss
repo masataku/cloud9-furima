@@ -1,3 +1,59 @@
 // Place all the styles related to the likes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// like-btnについて
+
+.like-btn {
+  width: 130px;
+  padding: 5px 5px;
+  position: relative;
+  border-radius: 30px;
+  &:focus {
+    outline: 0;
+  }
+  .like-icon {
+    position: absolute;
+    left: 15px;
+  }
+  .like-text {
+    position: absolute;
+    top: 7px;
+    left: 40px;
+    font-size: 14px;
+  }
+  .like-count {
+    position: absolute;
+    top: 7px;
+    right: 15px;
+    font-size: 14px;
+  }
+}  
+
+.btn-like {
+  border-color: #f1f1f1;
+  border-style: solid;
+  border-width: 1px;
+  background: #f1f1f1;
+  span {
+    opacity: 0.7;
+  }
+}
+
+.btn-unlike {
+  color: red;
+  border-color: red;
+  border-style: solid;
+  border-width: 1px;
+  background: white;
+  .like-icon{
+  animation: plun 0.8s ease 0s;
+  }
+}
+  
+@keyframes plun {
+  0% {transform: scale(1,1);}
+  40% {transform: scale(1.5,0.8);}
+  50% {transform: scale(0.8,1.4);}
+  100% {transform: scale(1,1);}
+}  
