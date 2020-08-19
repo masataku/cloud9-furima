@@ -32,9 +32,9 @@
       <% end %>
     </div>
   
-    
-  <%= render 'shared/display_btn' %>
-    
+  <% if @current_user %>  
+    <%= render 'shared/display_btn' %>
+  <% end %>  
     
   </div> 
 </div>

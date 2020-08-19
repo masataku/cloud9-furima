@@ -60,8 +60,9 @@
         <% end %>
       </div><br>
       
-      
-      
+      <% unless @item.saler == @current_user %>
+        <%= link_to "購入する", "/items/#{@item.id}/buyed", data: {confirm: "#{@item.price}P消費されます。本当に購入しますか?"}, class: "btn btn-danger btn-lg btn-block" %><br>
+      <% end %>
       <div class="item-text">
         <%= simple_format(@item.text) %><br/>
       </div>
@@ -72,17 +73,19 @@
     </div>
   </div>
   
-  
   <div class="page-container">
     <div class="page">
-    <% if @item.saler == @current_user %>
+      コメント
+    </div>
+  </div>
+  
+  <% if @item.saler == @current_user %>
+  <div class="page-container">
+    <div class="page">
       <%= link_to "商品編集", edit_item_path(@item), class: "btn btn-danger btn-lg btn-block" %>
       <%= link_to "この商品を削除する", item_path(@item), method: :delete, data:{confirm: "削除すると二度と復活できません。本当に削除しますか？"}, class: "btn btn-secondary btn-lg btn-block" %>
-    <% else %>  
-      <h3><%= link_to "購入する", "/items/#{@item.id}/buyed", data: {confirm: "#{@item.price}P消費されます。本当に購入しますか？"} %>・商品一覧</h3>
-    <% end %>
     </div>
   </div>  
-  
+  <% end %>
 </div>
 
