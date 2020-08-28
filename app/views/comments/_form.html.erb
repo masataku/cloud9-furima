@@ -1,0 +1,6 @@
+<%= form_for [@item, @comment] do |f| %>
+<div class="form-group">
+  <%= f.text_area :body, class: "form-control", rows: "4" %>
+</div>        
+  <%= f.submit "コメントする", class: "btn btn-secondary btn-lg btn-block" %>
+<% end %>

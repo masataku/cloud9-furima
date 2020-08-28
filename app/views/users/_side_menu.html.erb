@@ -1,0 +1,30 @@
+
+  <table border="1">
+    <tr onclick='window.location="<%= user_path(@current_user) %>"' role="link"><th>&emsp;マイページ</th><td><%= fa_icon "chevron-right", class: "table-icon" %>&emsp;</td></tr>
+    <tr><th>&emsp;お知らせ</th><td><%= fa_icon "chevron-right", class: "table-icon" %>&emsp;</td></tr>
+    <tr><th>&emsp;やることリスト</th><td><%= fa_icon "chevron-right", class: "table-icon" %>&emsp;</td></tr>
+    <tr onclick='window.location="<%= "/users/#{@current_user.id}/like_index" %>"' role="link"><th>&emsp;いいね一覧</th><td><%= fa_icon "chevron-right", class: "table-icon" %>&emsp;</td></tr>
+    <tr onclick='window.location="<%= new_item_path %>"' role="link"><th>&emsp;出品する</th><td><%= fa_icon "chevron-right", class: "table-icon" %>&emsp;</td></tr>
+    <tr onclick='window.location="<%= "/users/#{@user.id}/saling_index" %>"' role="link"><th>&emsp;出品した商品-出品中</th><td><%= fa_icon "chevron-right", class: "table-icon" %>&emsp;</td></tr>
+    <tr><th>&emsp;出品した商品-取引中</th><td><%= fa_icon "chevron-right", class: "table-icon" %>&emsp;</td></tr>
+    <tr onclick='window.location="<%= "/users/#{@user.id}/sold_index" %>"' role="link"><th>&emsp;出品した商品-売却済み</th><td><%= fa_icon "chevron-right", class: "table-icon" %>&emsp;</td></tr>
+    <tr><th>&emsp;購入した商品-取引中</th><td><%= fa_icon "chevron-right", class: "table-icon" %>&emsp;</td></tr>
+    <tr><th>&emsp;購入した商品-過去の取引</th><td><%= fa_icon "chevron-right", class: "table-icon" %>&emsp;</td></tr>
+    <tr><th>&emsp;評価一覧</th><td><%= fa_icon "chevron-right", class: "table-icon" %>&emsp;</td></tr>
+    <tr><th>&emsp;お問い合わせ</th><td><%= fa_icon "chevron-right", class: "table-icon" %>&emsp;</td></tr>
+  </table>
+  
+  <strong>メルペイ</strong>
+  <table border="1">
+    <tr><th>&emsp;残高・振り込み申請</th><td><%= fa_icon "chevron-right", class: "table-icon" %>&emsp;</td></tr>
+    <tr><th>&emsp;メルペイ</th><td><%= fa_icon "chevron-right", class: "table-icon" %>&emsp;</td></tr>
+  </table>
+  
+  <strong>設定</strong>
+　<table border="1">
+    <tr><th>&emsp;プロフィール</th><td><%= fa_icon "chevron-right", class: "table-icon" %>&emsp;</td></tr>
+    <tr><th>&emsp;発送元・お届け先住所変更</th><td><%= fa_icon "chevron-right", class: "table-icon" %>&emsp;</td></tr>
+    <tr><th>&emsp;メール/パスワード</th><td><%= fa_icon "chevron-right", class: "table-icon" %>&emsp;</td></tr>
+    <tr><th>&emsp;本人情報</th><td><%= fa_icon "chevron-right", class: "table-icon" %>&emsp;</td></tr>
+    <tr onclick='window.location="<%= users_logout_path %>"', type="link", method="post"><th>&emsp;ログアウト</th><td><%= fa_icon "chevron-right", class: "table-icon" %>&emsp;</td></tr>
+　</table>

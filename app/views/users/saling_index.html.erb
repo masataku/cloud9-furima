@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="user-box">
+    <div class="row">
+      
+      
+      <div class="col-sm-4">
+        <div class="box-1">
+        <%= render 'side_menu' %>
+        </div>
+      </div>
+      
+      
+      
+      <div class="col-sm-8">
+        <div class="box-2">
+          <div class="user-items-bar">
+            <h6>出品した商品</h6>
+          </div>
+          <div class="row bar-type">
+            <div onclick='window.location="<%= "/users/#{@user.id}/saling_index" %>"' role="link" class="col-sm-4 <%= "bar-type-active" if current_page?("/users/#{@user.id}/saling_index") %>">出品中</div>
+            <div class="col-sm-4">取引中</div>
+            <div onclick='window.location="<%= "/users/#{@user.id}/sold_index" %>"' role="link" class="col-sm-4 <%= "bar-type-active" if current_page?("/users/#{@user.id}/sold_index") %>">売却済み</div>
+          </div>
+          <%= render 'index' %>
+        </div>
+      </div>
+      
+    </div> 
+  </div>
+</div>
+
+
+<%= render 'shared/display_btn' %>

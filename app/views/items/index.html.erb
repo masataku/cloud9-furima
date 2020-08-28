@@ -1,5 +1,15 @@
 <h1>商品一覧</h1>
 
-<%= render 'index' %>
+<% @items.each do |item| %>
+<div id="index-item" onclick='window.location="<%= item_path(item) %>"' role="link">
+  <%= item.id %>
+
+  <%= link_to item_path(item) do %>
+    <%= image_tag "/item_images/#{item.image}", class: "index-item-image", width: "50px", height: "50px" %>
+  <% end %>
+  
+  
+</div>
+<% end %>
 
 <%= render 'shared/display_btn' %>

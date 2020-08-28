@@ -1,4 +1,27 @@
+<script>
+  $(function(){
+    
+    $("#grayLayer,#overLayer").on("click",function(){
+      $(".modal-image").addClass('modal-small');
+      $("#grayLayer,#overLayer").fadeOut();
+    });
+    $(window).on("scroll",function(){
+      $(".modal-image").addClass('modal-small');
+      $("#grayLayer,#overLayer").fadeOut();
+    });
+    $(".item-box").click(function(){
+      $("#grayLayer").fadeIn('fast');
+      $("#overLayer").fadeIn().html('<%= image_tag "/item_images/#{@item.image}", width: "700px", height: "700px", class: "modal-image modal-large" %>');
+    });
+    
+  });
+</script>
+
 <div id="page-wrapper">
+  <!--モーダル-->
+  <div id="grayLayer"></div>
+  <div id="overLayer" class="large"></div>
+  <!---->
   <h2>商品ページ</h2>
   <div class="page-container">
     <div class="page">
@@ -15,12 +38,14 @@
           </div>
         </div>
         <div class="col-md-6 item-info">
-          
-          
           <table border="1">
             <tr>
               <th>出品者</th>
-              <td><%= link_to @item.saler.name, @item.saler %></td>
+              <% if @item.saler %>
+                <td><%= link_to @item.saler.name, @item.saler %></td>
+              <% else %>
+                <td>退会済み</td>
+              <% end %>
             </tr>
             
             <tr>
@@ -60,7 +85,7 @@
         <% end %>
       </div><br>
       
-      <% unless @item.saler == @current_user %>
+      <% unless @item.saler == @current_user || @item.buyer %>
         <%= link_to "購入する", "/items/#{@item.id}/buyed", data: {confirm: "#{@item.price}P消費されます。本当に購入しますか?"}, class: "btn btn-danger btn-lg btn-block" %><br>
       <% end %>
       <div class="item-text">
@@ -75,7 +100,14 @@
   
   <div class="page-container">
     <div class="page">
+      <% @comments.each do |comment| %>
+      <div class="comment-box">
+        <p><%= simple_format(comment.body) %><%= time_ago_in_words comment.created_at %>前&emsp;&emsp;<%= link_to("/items/#{@item.id}/comments/#{comment.id}",class: "comment-delete", method: :delete, data: {confirm: "このコメントを本当に削除してもよろしいですか?"}) do %><%= fa_icon "trash" %><% end %><%= comment.user.name %></p>
+      </div><br>
+      <% end %>
+      <p class="comment-warning">相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。</p>
       コメント
+      <%= render '/comments/form' %>
     </div>
   </div>
   

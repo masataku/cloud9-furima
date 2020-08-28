@@ -21,10 +21,11 @@ class Item < ApplicationRecord
   belongs_to :saler, class_name: "User"
   belongs_to :buyer, optional: true, class_name: "User"
   has_many :likes, dependent: :destroy
-  
-  validates :name, :text, :price, presence: true
-  validates :price, numericality: {greater_than: 299, only_integer: true}
-  
+  has_many :comments, dependent: :destroy
+  validates :name, :text, :price, :image, :region, :state, :shipping_charge, :shipping_method, :shipping_date, presence: true
+  validates :price, numericality: {greater_than: 299, less_than: 10000000, only_integer: true}
+  validates :name, length: {maximum: 40}
+  validates :text, length: {maximum: 1000}
   
   
 end

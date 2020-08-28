@@ -1,8 +1,8 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user
   before_action :ensure_correct_user_of_item, {only:[:edit, :update, :destroy]}
-  before_action :set_item, {only: [:show, :edit, :update, :destroy]}
-  
+  before_action :set_item, {only: [:show, :edit, :update, :destroy, :buyed]}
+  before_action :correct_item_buyer, {only: [:buyed]}
   
   def index
     @items = Item.all.order(created_at: :desc)
@@ -11,6 +11,8 @@ class ItemsController < ApplicationController
   
   def show
     @like = @current_user.likes.find_or_initialize_by(item: @item)
+    @comment = Comment.new
+    @comments = @item.comments
   end
   
   
@@ -67,18 +69,10 @@ class ItemsController < ApplicationController
   end
   
   
+
   
   
-  def saling_index
-    @user = User.find(params[:id])
-    @items = @user.saling_items
-  end  
   
-  
-  def sold_index
-    @user = User.find(params[:id])
-    @items = @user.sold_items
-  end
   
   def buyed
     @item.buyer = @current_user
@@ -90,7 +84,7 @@ class ItemsController < ApplicationController
   private
   
   def item_params
-    params.require(:item).permit(:image, :name, :text, :price, :state, :region, :shipping_date, :shipping_method, :shipping_charge, :buyer_id)
+    params.require(:item).permit(:image, :name, :text, :price, :state, :region, :shipping_date, :shipping_method, :shipping_charge)
   end  
   
   def set_item

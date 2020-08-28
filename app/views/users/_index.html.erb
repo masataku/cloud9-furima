@@ -1,0 +1,25 @@
+
+<% @items.each do |item| %>
+<div id="index-item" onclick='window.location="<%= item_path(item) %>"' role="link">
+  <%= item.id %>
+
+  <span>
+    <%= image_tag "/item_images/#{item.image}", class: "index-item-image", width: "50px", height: "50px" %>
+  </span>
+  <p class="p-1"><%= item.name %></p>
+  <% if current_page?("/users/#{item.saler.id}/saling_index") %>
+    <p class="p-2">
+      <%= fa_icon "heart-o", class: "index-item-icon-1"%>&nbsp;<%= item.likes.count %>&emsp;<%= fa_icon "comment-o" %>&nbsp;<%= item.comments.count %>
+    </p>
+    <div class="saling-mark">出品中</div>
+  <% elsif current_page?("/users/#{item.saler.id}/sold_index") %>
+    <div class="sold-mark">売却済</div>
+  <% elsif current_page?("/users/#{@current_user.id}/like_index") %>
+    <p class="p-2">¥<%= item.price %></p>
+  <% end %>
+  
+  <%= fa_icon "chevron-right", class: "index-item-icon-2" %>
+  
+</div>
+<% end %>
+

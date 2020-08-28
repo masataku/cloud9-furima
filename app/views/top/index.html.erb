@@ -1,33 +1,29 @@
 <div id="top-wrapper">
   <div class="container">
     <h1>新着アイテム</h1>
-    <div class="top-items row row-eq-height">
+    <div class="top-items row">
       <% @items.each do |item| %>
-      <div class="col-md-3 items-box">
-        
+      <div class="col-md-3">
+        <div class="items-box">
         <%= link_to item, {class: "item-link"} do %>
-        <div class="card item-card">
-          <div class="card-img-top">
-            <%= image_tag "/item_images/#{item.image}", class: "card-img-top img-fluid h-100" %>
-            <div class="card-price">
-              ¥<%= item.price %>
-            </div>
-        
-          </div>　
-        　
+        <!--<div class="card item-card">-->
+          <div class="top-img">
+              <%= image_tag "/item_images/#{item.image}", class: "top-img", height: "180px", width: "100%" %>
+             <div class="card-price">
+                ¥<%= item.price %>
+             </div>
           
-           
-           
-          <div class="card-body text-center">
-            <div class="card-title">
-              <%= item.name %>
-            </div>
           </div>
-            
+          　
+          <div class="top-item-body">
+             <p><%= item.name.truncate(20, omission: "…") %></p>
+             <div class="top-item-like"><%= fa_icon "heart-o" %>&nbsp;<%= item.likes.count %></div>
+          </div>
+             
+             
           
-        </div>
         <% end %>
-        
+        </div>
       </div>  
       <% end %>
     </div>

@@ -1,0 +1,19 @@
+// Place all the styles related to the comments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.comment-warning {
+  background: #ffffcc;
+  font-size: 0.8rem;
+  padding: 6px 6px;
+  margin-top: -20px;
+}
+
+.comment-delete {
+  color: gray;
+}
+
+.comment-box {
+  background: #ccffff;
+  padding: 10px 10px;
+}

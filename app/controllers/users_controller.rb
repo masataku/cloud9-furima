@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
   before_action :authenticate_user, {only: [:index, :show, :edit, :update, :destroy, :logout]}
   before_action :forbid_login_user, {only: [:new, :create, :login_form, :login]}
-  before_action :ensure_correct_user, {only: [:edit, :updte, :destroy]}
-  before_action :set_user, {only: [:show, :edit, :update, :destroy]}
+  before_action :existence_user, {only: [:show, :edit, :update, :destroy]}
+  before_action :ensure_correct_user, {only: [:edit, :update, :destroy]}
+  before_action :set_user, {only: [:show, :edit, :update, :destroy, :saling_index, :sold_index, :like_index]}
   def index
     @users = User.all.order(id: :desc)
     
@@ -84,6 +85,23 @@ class UsersController < ApplicationController
     redirect_to root_path, notice: "ログアウトしました"
   end  
   
+  
+  # userのitem一覧
+   def like_index
+    @items = @current_user.like_items
+   end
+  
+  
+  def saling_index
+    @items = @user.saling_items
+  end  
+  
+  def sold_index
+    @items = @user.sold_items
+  end
+  
+  
+ 
   
   private
   

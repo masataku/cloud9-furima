@@ -6,42 +6,107 @@
     <%= form_for @item do |f| %>
     
       <div class="form-group">
-        <%= f.label :image, "画像" %><br />
+        <%= f.label :image, "画像" %>
         <%= f.file_field :image, class: "form-control-file" %>
+        <p class="error-image">画像がありません</p>
+        <% if @item.errors.include?(:image) %>
+          <script>
+          $(function(){
+            $(".error-image").css('display','block');
+          });
+          </script>
+           <!--@item.errors.full_messages_for(:image).first -->
+        <% end %>
       </div><br>
       
-      <div class="form-group">
-        <%= f.label :name, "商品名" %><br />
-        <%= f.text_field :name, placeholder: "40文字まで", class: "form-control" %>
-      </div><br>
       
       <div class="form-group">
-        <%= f.label :text, "商品説明" %><br />
-        <%= f.text_area :text, placeholder: text_placeholder, class: "form-control", rows: "6" %>
+        <%= f.label :name, "商品名" %>
+        <%= f.text_field :name, placeholder: "40文字まで", class: "form-control item-form-name" %>
+        <p class="error-name">商品名を40文字以内で入力してください</p>
+        <% if @item.errors.include?(:name) %>
+        <script>
+          $(function(){
+            $(".item-form-name").css('border-color','red');
+            $(".error-name").css('display','block');
+          });
+        </script>
+            <!--@item.errors.full_messages_for(:name).first-->
+        <% end %>
       </div><br>
       
+      
       <div class="form-group">
-        <%= f.label :state, "商品の状態" %><br/>
+        <%= f.label :text, "商品説明" %>
+        <%= f.text_area :text, placeholder: text_placeholder, class: "form-control item-form-text", rows: "6" %>
+        <p class="error-text">商品説明を1000文字以内で入力してください</p>
+        <% if @item.errors.include?(:text) %>
+          <script>
+          $(function(){
+            $(".item-form-text").css('border-color','red');
+            $(".error-text").css('display','block');
+          });
+        </script>
+           <!--@item.errors.full_messages_for(:text).first -->
+        <% end %>
+      </div><br>
+      
+      
+      <div class="form-group">
+        <%= f.label :state, "商品の状態" %>
         <%= f.select :state,
             [["新品未使用", "新品未使用"], ["未使用に近い", "未使用に近い"], ["目立った傷や汚れなし","目立った傷や汚れなし"], ["やや傷や汚れあり","やや傷や汚れあり"], ["傷や汚れあり","傷や汚れあり"], ["全体的に状態が悪い","全体的に状態が悪い"]],
-            {include_blank: "選択してください"}, {autofocus: true, class: "form-control"} %>
+            {include_blank: "選択してください"}, {autofocus: true, class: "form-control item-form-state"} %>
+        <p class="error-state">選択してください</p>    
+        <% if @item.errors.include?(:state) %>
+          <script>
+            $(function(){
+              $(".item-form-state").css('border-color','red');
+              $(".error-state").css('display','block');
+            });
+          </script>
+           <!--@item.errors.full_messages_for(:state).first -->
+        <% end %>    
       </div><br>
       
-      <div class="form-group">
-        <%= f.label :shipping_charge, "配送料の負担" %><br>
-        <%= f.select :shipping_charge, [["送料込み(出品者負担)", "送料込み(出品者負担)"], ["着払い(購入者負担)", "着払い(購入者負担)"]],
-                                       {include_blank: "選択してください"}, {autofocus: true, class: "form-control"} %>
-      </div>
       
       <div class="form-group">
-        <%= f.label :shipping_method, "配送の方法" %><br>
+        <%= f.label :shipping_charge, "配送料の負担" %>
+        <%= f.select :shipping_charge, [["送料込み(出品者負担)", "送料込み(出品者負担)"], ["着払い(購入者負担)", "着払い(購入者負担)"]],
+                                       {include_blank: "選択してください"}, {autofocus: true, class: "form-control item-form-shipping_charge"} %>
+        <p class="error-shipping_charge">選択してください</p>
+        <% if @item.errors.include?(:shipping_charge) %>
+          <script>
+          $(function(){
+            $(".item-form-shipping_charge").css('border-color','red');
+            $(".error-shipping_charge").css('display','block');
+          });
+          </script>
+           <!--@item.errors.full_messages_for(:shipping_charge).first-->
+        <% end %>                               
+      </div><br>
+      
+      
+      <div class="form-group">
+        <%= f.label :shipping_method, "配送の方法" %>
         <%= f.select :shipping_method,
             [["未定", "未定"], ["らくらくメルカリ便", "らくらくメルカリ便"], ["ゆうゆうメルカリ便", "ゆうゆうメルカリ便"], ["ゆうメール", "ゆうメール"], ["レターパック", "レターパック"], ["普通郵便(定形,定形外)", "普通郵便(定形,定形外)"], ["クロネコヤマト", "クロネコヤマト"], ["ゆうパック", "ゆうパック"], ["クリックポスト", "クリックポスト"], ["ゆうパケット", "ゆうパケット"]],
-            {include_blank: "選択してください"}, {autofocus: true, class: "form-control"} %>
+            {include_blank: "選択してください"}, {autofocus: true, class: "form-control item-form-shipping_method"} %>
+        <p class="error-shipping_method">選択してください</p>    
+        <% if @item.errors.include?(:shipping_method) %>
+          <script>
+          $(function(){
+            $(".item-form-shipping_method").css('border-color','red');
+            $(".error-shipping_method").css('display','block');
+          });
+          </script>
+           <!--@item.errors.full_messages_for(:shipping_method).first -->
+        <% end %>    
       </div><br>
       
+      
       <div class="form-group">
-        <%= f.label :region, "発送元の地域" %><br/>
+        <%= f.label :region, "発送元の地域" %>
         <%= f.select :region,
             [["北海道", "北海道"], ["青森県", "青森県"], ["岩手県", "岩手県"], ["宮城県", "宮城県"],["秋田県", "秋田県"], ["山形県", "山形県"], ["福島県", "福島県"], ["茨城県", "茨城県"], 
             ["栃木県", "栃木県"], ["群馬県", "群馬県"], ["埼玉県", "埼玉県"], ["千葉県", "千葉県"], ["東京都", "東京都"], ["神奈川県", "神奈川県"], ["新潟県", "新潟県"], ["富山県", "富山県"],
@@ -49,22 +114,58 @@
             ["京都府", "京都府"], ["大阪府", "大阪府"], ["兵庫県", "兵庫県"], ["奈良県", "奈良県"], ["和歌山県", "和歌山県"], ["鳥取県", "鳥取県"], ["島根県", "島根県"], ["岡山県", "岡山県"], ["広島県", "広島県"], 
             ["山口県", "山口県"], ["徳島県", "徳島県"], ["香川県", "香川県"], ["愛媛県", "愛媛県"], ["高知県", "高知県"], ["福岡県", "福岡"], ["佐賀県", "佐賀県"], ["長崎県", "長崎県"], ["熊本県", "熊本県"], ["大分県", "大分県"], 
             ["宮崎県", "宮崎県"], ["鹿児島県", "鹿児島県"], ["沖縄県", "沖縄県"], ["未定", "未定"]], 
-            {include_blank: "選択してください"}, {autofocus: true, class: "form-control"} %>
+            {include_blank: "選択してください"}, {autofocus: true, class: "form-control item-form-region"} %>
+        <p class="error-region">選択してください</p>    
+        <% if @item.errors.include?(:region) %>
+          <script>
+          $(function(){
+            $(".item-form-region").css('border-color','red');
+            $(".error-region").css('display','block');
+          });
+          </script>
+           <!--@item.errors.full_messages_for(:region).first -->
+        <% end %>    
       </div><br>
+      
       
       <div class="form-group">
-        <%= f.label :shipping_date, "発送までの日数" %><br/>
+        <%= f.label :shipping_date, "発送までの日数" %>
         <%= f.select :shipping_date,
             [["1~2日で発送", "1~2日で発送"], ["2~3日で発送", "2~3日で発送"], ["4~7日で発送", "4~7日で発送"]], 
-            {include_blank: "選択してください"}, {autofocus: true, class: "form-control"} %>
+            {include_blank: "選択してください"}, {autofocus: true, class: "form-control item-form-shipping_date"} %>
+        <p class="error-shipping_date">選択してください</p>    
+        <% if @item.errors.include?(:shipping_date) %>
+          <script>
+          $(function(){
+            $(".item-form-shipping_date").css('border-color','red');
+            $(".error-shipping_date").css('display','block');
+          });
+          </script>
+           <!--@item.errors.full_messages_for(:shipping_date).first-->
+        <% end %>    
       </div><br>
       
       
-      <div class="form-group row">
-        <%= f.label :price, "商品価格", class: "col-sm-5" %>
-        <div class="col-sm-1 price-mark">¥</div>
-        <%= f.text_field :price, placeholder: "0", class: "form-control col-sm-6" %>
-      </div><br>
+      <div class="form-group form-price">
+        <%= f.label :price, "商品価格", class: "price-label" %>
+        <span class="price-mark">¥</span>
+        <%= f.text_field :price, placeholder: "0", class: "form-control w-50 price-field item-form-price" %>
+        <p class="error-price">300~9999999で入力してください</p>
+        <div class="price-error">
+        <% if @item.errors.include?(:price) %>
+          <script>
+          $(function(){
+            $(".item-form-price").css('border-color','red');
+            $(".error-price").css('display','block');
+          });
+          </script>
+           <!--@item.errors.full_messages_for(:price).first -->
+        <% end %>
+        </div>
+      </div><br><br><br>
+      
+        
+      
       
       
       
@@ -78,7 +179,7 @@
       
       
       <%= f.submit @item.new_record? ? "出品する" : "変更する", :class=>"btn btn-danger btn-lg btn-block" %><br>
-      <%= link_to "もどる", items_path, class: "btn btn-secondary btn-lg btn-block" %>
+      <%= link_to "もどる", user_path(@current_user), class: "btn btn-secondary btn-lg btn-block" %>
     
     
     <% end %>
