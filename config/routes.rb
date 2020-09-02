@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'users/:id/saling_index' => 'users#saling_index'
   get 'users/:id/sold_index' => 'users#sold_index'
   resources :users do
-    resources :likes, :comments, only: [:create, :destroy]
+    resources :likes
   end  
   resources :items do
     resources :likes, :comments, only: [:create, :destroy]

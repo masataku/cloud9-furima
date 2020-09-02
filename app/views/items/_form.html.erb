@@ -178,9 +178,12 @@
       
       
       
-      <%= f.submit @item.new_record? ? "出品する" : "変更する", :class=>"btn btn-danger btn-lg btn-block" %><br>
-      <%= link_to "もどる", user_path(@current_user), class: "btn btn-secondary btn-lg btn-block" %>
-    
+      <%= f.submit @item.new_record? ? "出品する" : "変更する", :class=>"form-btn-red" %><br>
+      <%= link_to user_path(@current_user) do %>
+        <div class="form-btn-gray">
+          もどる
+        </div>
+      <% end %>
     
     <% end %>
     </div>

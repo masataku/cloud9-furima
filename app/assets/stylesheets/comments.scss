@@ -17,3 +17,15 @@
   background: #ccffff;
   padding: 10px 10px;
 }
+
+.forbid-comment-btn {
+  background: gray;
+  height: 50px;
+  width: 100%;
+  line-height: 50px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: white;
+  border-radius: 5px;
+  cursor: not-allowed;
+}

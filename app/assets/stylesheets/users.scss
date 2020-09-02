@@ -83,6 +83,9 @@
       margin-left: 0px;
       font-weight: 600;
       cursor: pointer;
+      div:hover {
+        color: gray;
+      }
     }
     
     #index-item {
@@ -151,6 +154,27 @@
         text-align: center;
         line-height: 22px;
         border-radius: 10%;
+      }
+      
+      .like_index-sold-mark {
+        position: absolute;
+        top: 17px;
+        left: 21.4px;
+        width: 0;
+        height: 0;
+        border-top: 20px solid red;
+        border-right: 20px solid transparent;
+        border-bottom: 20px solid transparent;
+        border-left: 20px solid red;
+        p {
+          position: absolute;
+          top: -13px;
+          left: -20px;
+          font-size: 0.6rem;
+          font-weight: 700;
+          transform: rotate(-45deg);
+          color: white;
+        }
       }
     }
       

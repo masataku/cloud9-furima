@@ -28,13 +28,12 @@ body {
 }
 
 
-
-
-
-.row-eq-height {
-  display: flex;
-  flex-wrap: wrap;
+li {
+  list-style: none;
 }
+
+
+// ボタン/////////
 
 #display-btn {
   position: fixed;
@@ -62,10 +61,56 @@ body {
 }
 
 
-li {
-  list-style: none;
+
+.form-btn-red {
+  display: inline-block;
+  border: solid 1px red;
+  background: red;
+  height: 50px;
+  width: 100%;
+  margin-bottom: 10px;
+  line-height: 50px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: white;
+  border-radius: 3px;
+  text-decoration: none;
+  &:hover {
+    background: #cc3333;
+    transition: 0.2s;
+  }
+}
+.form-btn-gray {
+  display: inline-block;
+  border: solid 1px gray;
+  background: gray;
+  height: 50px;
+  width: 100%;
+  line-height: 50px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: white;
+  border-radius: 3px;
+  text-decoration: none;
+  opacity: 0.7;
+  &:hover {
+    transition: 0.2s;
+    opacity: 1;
+  }
+}
+.get-item-btn {
+  display: inline-block;
+  border: solid 1px red;
+  background: red;
+  height: 58px;
+  width: 100%;
+  margin-bottom: 40px;
+  line-height: 58px;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: white;
+  text-decoration: none;
 }
 
-
-
-
+// /////////

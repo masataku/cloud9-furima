@@ -2,7 +2,13 @@
 <% @items.each do |item| %>
 <div id="index-item" onclick='window.location="<%= item_path(item) %>"' role="link">
   <%= item.id %>
-
+  <% if current_page?("/users/#{@current_user.id}/like_index") %>
+    <% if item.buyer %>
+    <div class="like_index-sold-mark">
+      <p>SOLD</p>
+    </div>
+    <% end %>
+  <% end %>
   <span>
     <%= image_tag "/item_images/#{item.image}", class: "index-item-image", width: "50px", height: "50px" %>
   </span>

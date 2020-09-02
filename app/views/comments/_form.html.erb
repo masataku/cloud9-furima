@@ -1,6 +1,15 @@
 <%= form_for [@item, @comment] do |f| %>
-<div class="form-group">
-  <%= f.text_area :body, class: "form-control", rows: "4" %>
-</div>        
-  <%= f.submit "コメントする", class: "btn btn-secondary btn-lg btn-block" %>
+  <% unless @item.buyer %>
+  <div class="form-group">
+    <%= f.text_area :body, class: "form-control", rows: "4" %>
+  </div>
+    <%= f.submit "コメントする", class: "form-btn-gray" %>
+  <% else %>
+  <div class="form-group">
+    <%= f.text_area :body, class: "form-control", disabled: true, rows: "4" %>
+  </div>
+    <div class="forbid-comment-btn">
+    売り切れのためコメントできません
+    </div>
+  <% end %>  
 <% end %>
