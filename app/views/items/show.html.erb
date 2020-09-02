@@ -33,7 +33,9 @@
           <div class="item-box">
             <%= image_tag "/item_images/#{@item.image}", class: "item-image", width: "300px" %>
             <% if @item.buyer %>
-              <h2>SOLD OUT!</h2>
+            <div class="sold-mark">
+              <p>SOLD</p>
+            </div>
             <% end %>
           </div>
         </div>

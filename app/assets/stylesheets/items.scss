@@ -59,13 +59,24 @@
     position: relative;
     box-sizing: inherit;
   }
-  h2 {
-    position: absolute;
-    top: 120px;
-    right: 0;
-    left: 0;
-    
-    color: red;
+  .sold-mark {
+   position: absolute;
+   top: 0;
+   width: 0px;
+   height: 0px;
+   border-top: 60px solid red;
+   border-right: 60px solid transparent;
+   border-bottom: 60px solid transparent;
+   border-left: 60px solid red;
+   p {
+     position: absolute;
+     top: -40px;
+     left: -55px;
+     transform: rotate(-45deg);
+     font-size: 1.7rem;
+     color: white;
+     letter-spacing: 2px;
+   }
   }
 }
 

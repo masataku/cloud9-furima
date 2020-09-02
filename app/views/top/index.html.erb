@@ -1,23 +1,28 @@
-<div id="top-wrapper">
+<div id="item-index-wrapper">
   <div class="container">
     <h1>新着アイテム</h1>
-    <div class="top-items row">
+    <div class="index-items row">
       <% @items.each do |item| %>
       <div class="col-md-3">
         <div class="items-box">
         <%= link_to item, {class: "item-link"} do %>
         <!--<div class="card item-card">-->
-          <div class="top-img">
-              <%= image_tag "/item_images/#{item.image}", class: "top-img", height: "180px", width: "100%" %>
-             <div class="card-price">
+          <div class="index-img">
+            <% if item.buyer %>
+            <div class="index-sold-mark">
+              <p>SOLD</p>
+            </div>
+            <% end %>
+              <%= image_tag "/item_images/#{item.image}", class: "index-img", height: "180px", width: "100%" %>
+             <div class="index-price">
                 ¥<%= item.price %>
              </div>
           
           </div>
           　
-          <div class="top-item-body">
+          <div class="index-item-body">
              <p><%= item.name.truncate(20, omission: "…") %></p>
-             <div class="top-item-like"><%= fa_icon "heart-o" %>&nbsp;<%= item.likes.count %></div>
+             <div class="index-item-like"><%= fa_icon "heart-o" %>&nbsp;<%= item.likes.count %></div>
           </div>
              
              
@@ -25,6 +30,9 @@
         <% end %>
         </div>
       </div>  
+      <% end %>
+      <%= link_to(items_path) do %>
+        <p class="see-more">もっと見る&emsp;></p>
       <% end %>
     </div>
   

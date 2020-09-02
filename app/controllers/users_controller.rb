@@ -93,7 +93,7 @@ class UsersController < ApplicationController
   
   
   def saling_index
-    @items = @user.saling_items
+    @items = @user.saling_items.order(created_at: :desc)
   end  
   
   def sold_index

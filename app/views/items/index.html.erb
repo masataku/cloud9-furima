@@ -1,15 +1,37 @@
-<h1>商品一覧</h1>
-
-<% @items.each do |item| %>
-<div id="index-item" onclick='window.location="<%= item_path(item) %>"' role="link">
-  <%= item.id %>
-
-  <%= link_to item_path(item) do %>
-    <%= image_tag "/item_images/#{item.image}", class: "index-item-image", width: "50px", height: "50px" %>
-  <% end %>
+<div id="item-index-wrapper">
+  <div class="container">
+    <h1>商品一覧</h1>
+    <div class="index-items row">
+      <% @items.each do |item| %>
+      <div class="col-md-3">
+        <div class="items-box">
+        <%= link_to item, {class: "item-link"} do %>
+          <div class="index-img">
+            <% if item.buyer %>
+            <div class="index-sold-mark">
+              <p>SOLD</p>
+            </div>
+            <% end %>
+              <%= image_tag "/item_images/#{item.image}", class: "index-img", height: "180px", width: "100%" %>
+             <div class="index-price">
+                ¥<%= item.price %>
+             </div>
+          </div>
+          　
+          <div class="index-item-body">
+             <p><%= item.name.truncate(20, omission: "…") %></p>
+             <div class="index-item-like"><%= fa_icon "heart-o" %>&nbsp;<%= item.likes.count %></div>
+          </div>
+             
+             
+          
+        <% end %>
+        </div>
+      </div>  
+      <% end %>
+    </div>
   
-  
+    <%= render 'shared/display_btn' %>
+    
+  </div> 
 </div>
-<% end %>
-
-<%= render 'shared/display_btn' %>
