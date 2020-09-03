@@ -13,7 +13,7 @@
       margin-bottom: 30px;
       cursor: pointer;
       tr{ 
-        height: 60px;
+        height: 52px;
         padding: 20px 20px;
         font-size: 13px;
        
@@ -187,3 +187,13 @@
   background: white;
   border-top: solid 2px red;
 }
+// profile用
+.user-top-image {
+  display: inline-block;
+  width: 70px;
+  height: 70px;
+  margin-top: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+// //////////////

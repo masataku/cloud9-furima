@@ -6,25 +6,52 @@
   text-align: center;
   } 
   .page-container {
-  margin: 40px 220px;
-  background: white;
+    margin: 40px 220px;
+    background: white;
    .page {
-   padding: 40px 30px;
+     padding: 40px 30px;
+     
    }
   }
 }
-// user_page
-// .user-box {
-//   .box-1 {
-//   background: white;
-//   width: 300px;
-//   height: 100%;
-//   margin-left: 20px;
-  
-// }
-// .box-2 {
-//   background: white;
-//   margin-right: 25px;
-// }
- 
-// }
+// user edit
+.profile {
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.edit-page {
+  position: relative;
+  height: 170px;
+  background-image: url("background.jpg");
+  .edit-image {
+    position: absolute;
+    bottom: 20px;
+    left: 200px;
+  }
+  .edit-name {
+    position: absolute;
+    bottom: 28px;
+    right: 200px;
+    width: 220px;
+    height: 50px;
+    border: solid 1px #d1d1d1;
+    &:focus {
+      outline: solid 1px #3399ff;
+    }
+  }
+}
+.edit-form-body {
+  padding: 10px 20px;
+  .edit-body {
+    width: 100%;
+    border: solid 1px #d1d1d1;
+    &:focus {
+      outline: solid 1px #3399ff;
+    }
+  }
+}
+// ////////////

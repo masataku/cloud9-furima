@@ -2,10 +2,11 @@ Rails.application.routes.draw do
   root 'top#index'
   get 'users/login' => 'users#login_form'
   post 'users/login' => 'users#login'
-  get 'users/logout' => 'users#logout' #今のところはpathをgetにしているが、session付けたら変更
+  get 'users/logout' => 'users#logout'
   get 'users/:id/like_index' => 'users#like_index'
   get 'users/:id/saling_index' => 'users#saling_index'
   get 'users/:id/sold_index' => 'users#sold_index'
+  get 'users/:id/buyed_index' => 'users#buyed_index'
   resources :users do
     resources :likes
   end  

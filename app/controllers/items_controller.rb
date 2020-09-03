@@ -69,11 +69,6 @@ class ItemsController < ApplicationController
   end
   
   
-
-  
-  
-  
-  
   def buyed
     @item.buyer = @current_user
     @item.save
@@ -90,4 +85,31 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
   end  
+  
+  def ensure_correct_user_of_item
+    if Item.exists?(params[:id])
+      item = Item.find(params[:id]) 
+      if @current_user.id != item.saler_id
+        redirect_to user_path(@current_user)
+      else
+        return
+      end
+      
+    else
+      redirect_to user_path(@current_user)
+    end  
+  end 
+  
+  def correct_item_buyer
+    if Item.exists?(params[:id])
+      item = Item.find(params[:id])
+      if item.saler == @current_user || item.buyer 
+        redirect_to user_path(@current_user)
+      else
+        return
+      end
+    else
+      redirect_to user_path(@current_user)
+    end  
+  end
 end

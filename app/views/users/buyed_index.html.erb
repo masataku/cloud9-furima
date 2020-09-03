@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="user-box">
+    <div class="row">
+      
+      
+      <div class="col-sm-4">
+        <div class="box-1">
+        <%= render 'side_menu' %>
+        </div>
+      </div>
+      
+      
+      
+      <div class="col-sm-8">
+        <div class="box-2">
+          <div class="user-items-bar">
+            <h6>購入した商品</h6>
+          </div>
+          <div class="row bar-type">
+            <div class="col-sm-6">取引中</div>
+            <div onclick='window.location="<%= "/users/#{@user.id}/buyed_index" %>"' role="link" class="col-sm-6 <%= "bar-type-active" if current_page?("/users/#{@user.id}/buyed_index") %>">過去の取引</div>
+          </div>
+          <%= render 'index' %>
+        </div>
+      </div>
+      
+    </div> 
+  </div>
+</div>
+
+
+<%= render 'shared/display_btn' %>

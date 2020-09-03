@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :forbid_login_user, {only: [:new, :create, :login_form, :login]}
   before_action :existence_user, {only: [:show, :edit, :update, :destroy]}
   before_action :ensure_correct_user, {only: [:edit, :update, :destroy]}
-  before_action :set_user, {only: [:show, :edit, :update, :destroy, :saling_index, :sold_index, :like_index]}
+  before_action :set_user, {only: [:show, :edit, :update, :destroy, :saling_index, :sold_index, :like_index, :buyed_index]}
   def index
     @users = User.all.order(id: :desc)
     
@@ -87,10 +87,9 @@ class UsersController < ApplicationController
   
   
   # userのitem一覧
-   def like_index
+  def like_index
     @items = @current_user.like_items
-   end
-  
+  end
   
   def saling_index
     @items = @user.saling_items.order(created_at: :desc)
@@ -100,7 +99,9 @@ class UsersController < ApplicationController
     @items = @user.sold_items
   end
   
-  
+  def buyed_index
+    @items = @user.buyed_items
+  end
  
   
   private
@@ -111,5 +112,23 @@ class UsersController < ApplicationController
   
   def set_user
     @user = User.find(params[:id])
+  end 
+  
+  def forbid_login_user
+    if @current_user
+      redirect_to users_path, notice: "既にログインしています"
+    end  
   end  
+  
+  def ensure_correct_user
+    if @current_user.id != params[:id].to_i
+      redirect_to user_path(@current_user)
+    end  
+  end
+  
+  def existence_user
+    unless User.find_by_id(params[:id]) 
+      redirect_to user_path(@current_user)
+    end  
+  end
 end  
