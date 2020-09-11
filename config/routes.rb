@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'users/:id/saling_index' => 'users#saling_index'
   get 'users/:id/sold_index' => 'users#sold_index'
   get 'users/:id/buyed_index' => 'users#buyed_index'
+  get 'users/:id/info_index' => 'users#info_index'
   resources :users do
     resources :likes
   end  

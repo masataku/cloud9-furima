@@ -3,7 +3,8 @@ class UsersController < ApplicationController
   before_action :forbid_login_user, {only: [:new, :create, :login_form, :login]}
   before_action :existence_user, {only: [:show, :edit, :update, :destroy]}
   before_action :ensure_correct_user, {only: [:edit, :update, :destroy]}
-  before_action :set_user, {only: [:show, :edit, :update, :destroy, :saling_index, :sold_index, :like_index, :buyed_index]}
+  before_action :set_user, {only: [:show, :edit, :update, :destroy, :saling_index, :sold_index, :like_index, :buyed_index, :info_index
+  ]}
   def index
     @users = User.all.order(id: :desc)
     
@@ -88,7 +89,7 @@ class UsersController < ApplicationController
   
   # userのitem一覧
   def like_index
-    @items = @current_user.like_items
+    @items = @current_user.like_items.order(created_at: :desc)
   end
   
   def saling_index
@@ -100,9 +101,13 @@ class UsersController < ApplicationController
   end
   
   def buyed_index
-    @items = @user.buyed_items
+    @items = @user.buyed_items.order(buyed_or_sold_time: :desc)
   end
- 
+  
+  def info_index
+    @items = @user.saling_items
+    
+  end
   
   private
   

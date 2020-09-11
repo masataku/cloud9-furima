@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200819070000) do
+ActiveRecord::Schema.define(version: 20200908073120) do
 
   create_table "comments", force: :cascade do |t|
     t.text "body"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20200819070000) do
     t.string "shipping_date"
     t.string "shipping_method"
     t.string "shipping_charge"
+    t.datetime "buyed_or_sold_time"
   end
 
   create_table "likes", force: :cascade do |t|

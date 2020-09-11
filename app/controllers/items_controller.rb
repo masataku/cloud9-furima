@@ -71,6 +71,7 @@ class ItemsController < ApplicationController
   
   def buyed
     @item.buyer = @current_user
+    @item.buyed_or_sold_time = DateTime.now
     @item.save
     redirect_to item_path(@item), notice: "購入しました"
   end
@@ -79,7 +80,7 @@ class ItemsController < ApplicationController
   private
   
   def item_params
-    params.require(:item).permit(:image, :name, :text, :price, :state, :region, :shipping_date, :shipping_method, :shipping_charge)
+    params.require(:item).permit(:image, :name, :text, :price, :state, :region, :shipping_date, :shipping_method, :shipping_charge, :buyed_or_sold_time)
   end  
   
   def set_item

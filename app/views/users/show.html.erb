@@ -1,9 +1,4 @@
-<% if @user.id == @current_user.id %>
-  <h2>マイページ</h2>
-<% else %>
-  <h2><%= @user.name %>さん</h2><%= @user.id %>
-<% end %> 
-
+メアド<%= @user.email %>
 
 <div class="container">
   <div class="user-box">
@@ -22,28 +17,31 @@
         <div class="box-2">
           <div class="user-top">
             <div>
-              <%= image_tag "/user_images/#{@user.image}", class: "user-top-image" %><br><br>
+              <%= link_to edit_user_path do %>
+              <%= image_tag "/user_images/#{@user.image}", class: "user-top-image" %><br>
+              <% end %>
               <%= @user.name %><br>
               出品数<%= @user.saling_items.count + @user.sold_items.count %>
             </div>
           </div>
+          <div class="user-top-low">
+            <div class="row bar-type">
+            <div class="col-sm-6 bar-type-active">お知らせ</div>
+            <div class="col-sm-6">やることリスト</div>
+            <div id="user-index">sssss</div>
+          </div>
+          <!--<% if @user.id == @current_user.id %>-->
+          <!--  <%= link_to "情報の編集", edit_user_path(@current_user) %>-->
+          <!--<% end %>  -->
           
-          <p>ユーザー名：<%= @user.name %></p>
-          <p>メールアドレス：<%= @user.email %></p>
-          <p>ポイント：<%= @user.point %>P</p>
-          <p>自己紹介：<%= @user.text %></p>
-          
-          <% if @user.id == @current_user.id %>
-            <%= link_to "情報の編集", edit_user_path(@current_user) %>
-          <% end %>  
-          
-          ・<%= link_to "出品一覧", "/users/#{@user.id}/saling_index" %>・<%= link_to "売却一覧", "/users/#{@user.id}/sold_index" %>・・<%= link_to "いいね一覧", "/users/#{@current_user.id}/like_index" %>・<%= link_to "購入一覧", "/users/#{@user.id}/buyed_index" %>
+          <!--・<%= link_to "出品一覧", "/users/#{@user.id}/saling_index" %>・<%= link_to "売却一覧", "/users/#{@user.id}/sold_index" %>・・<%= link_to "いいね一覧", "/users/#{@current_user.id}/like_index" %>・<%= link_to "購入一覧", "/users/#{@user.id}/buyed_index" %>-->
           
           
           
-          <% if @user.id == @current_user.id %>
-            <%= link_to "退会する", user_path(@user), method: :delete, data: {confirm: "ポイント：#{@user.point}Pは消えてしまいます。本当に退会しますか？"} %>
-          <% end %>
+          <!--<% if @user.id == @current_user.id %>-->
+          <!--  <%= link_to "退会する", user_path(@user), method: :delete, data: {confirm: "ポイント：#{@user.point}Pは消えてしまいます。本当に退会しますか？"} %>-->
+          <!--<% end %>-->
+          </div>
         </div>
       </div>
       

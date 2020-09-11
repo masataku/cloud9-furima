@@ -83,7 +83,9 @@
       <div class="item-price-info">
         <strong class="item-price">¥<%= @item.price %></strong>
       　<% if @item.shipping_charge == "送料込み(出品者負担)" %>
-        送料込み
+        　(送料込み)
+        <% else %>
+          (送料別)
         <% end %>
       </div><br>
       
@@ -93,6 +95,11 @@
             購入する
           </div>
         <% end %>
+      <% end %>
+      <% if @item.saler != @current_user && @item.buyer %>
+        <div class="sold-item-btn">
+          売り切れました
+        </div>
       <% end %>
       <div class="item-text">
         <%= simple_format(@item.text) %><br/>
