@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
     @comment = @item.comments.build(user: @current_user)
     @comment.body = comment_params[:body]
     if @comment.save
+      @item.search_commenter_and_create_notification(@current_user, @comment.id)
       redirect_to @item, notice: "コメントしました"
     end  
   end

@@ -1,0 +1,37 @@
+<% @notifications.each do |notification| %>
+  <% item = Item.find(notification.item_id) %>
+<% unless notification.action == "like" && notification.sender == @current_user %>  
+<div id="user-index" onclick='window.location="<%= item_path(item) %>"' role="link">
+  <% if notification.action == "like" %>
+    <span>
+      <%= image_tag "/user_images/#{notification.sender.image}", class: "index-item-image", width: "50px", height: "50px" %>
+    </span>
+    <p class="p-1">
+      <%= notification.sender.name %>さんが「<%= item.name %>」にいいね！しました
+    </p>
+    <p class="p-2">
+      <%= fa_icon "history" %>&nbsp;<%= time_ago_in_words notification.created_at %>前
+    </p>
+  <% elsif notification.action == "comment" %>
+    <span>
+      <%= image_tag "/item_images/#{notification.item.image}", class: "index-item-image", width: "50px", height: "50px" %>
+    </span>
+    <p class="p-1">
+      <% if notification.sender == @current_user %>
+        あなた
+      <% else %>
+        <%= notification.sender.name %>さん
+      <% end %>  
+      が「<%= item.name %>」にコメントしました
+    </p>
+    <p class="p-2">
+      <%= fa_icon "history" %>&nbsp;<%= time_ago_in_words notification.created_at %>前
+    </p>
+  <% end %>
+  
+  
+  <%= fa_icon "chevron-right", class: "index-item-icon" %>
+  
+</div>
+<% end %>
+<% end %>

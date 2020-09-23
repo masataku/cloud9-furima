@@ -10,14 +10,56 @@
     background: white;
    .page {
      padding: 40px 30px;
-     
    }
+   .page-2 {
+     border-top: solid 5px #f1f1f1;
+   }
+   
   }
 }
+.label {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  .mandatory {
+    position: absolute;
+    margin-left: 10px;
+    display: inline-block;
+    padding: 2px;
+    background: red;
+    font-size: 0.7rem;
+    color: white;
+    width: 30px;
+    text-align: center;
+    font-weight: 200;
+    border-radius: 2px 2px;
+  }
+  .any {
+    position: absolute;
+    margin-left: 10px;
+    display: inline-block;
+    padding: 2px;
+    background: gray;
+    opacity: 0.5;
+    font-size: 0.7rem;
+    color: white;
+    width: 30px;
+    text-align: center;
+    font-weight: 200;
+    border-radius: 2px 2px;
+  }
+}  
+
+.edit-container {
+  padding: 30px 180px;
+}
 // user edit
-.profile {
-  height: 50px;
-  line-height: 50px;
+.heading {
+  border-bottom: solid 2px #f1f1f1;
+  height: 58px;
+  line-height: 58px;
   text-align: center;
   font-size: 1.5rem;
   font-weight: 600;

@@ -6,7 +6,7 @@
     <%= form_for @item do |f| %>
     
       <div class="form-group">
-        <%= f.label :image, "画像" %>
+        <div class="label">画像<div class="mandatory">必須</div></div>
         <%= f.file_field :image, class: "form-control-file" %>
         <p class="error-image">画像がありません</p>
         <% if @item.errors.include?(:image) %>
@@ -21,7 +21,7 @@
       
       
       <div class="form-group">
-        <%= f.label :name, "商品名" %>
+        <div class="label">商品名<div class="mandatory">必須</div></div>
         <%= f.text_field :name, placeholder: "40文字まで", class: "form-control item-form-name" %>
         <p class="error-name">商品名を40文字以内で入力してください</p>
         <% if @item.errors.include?(:name) %>
@@ -37,7 +37,7 @@
       
       
       <div class="form-group">
-        <%= f.label :text, "商品説明" %>
+        <div class="label">商品説明<div class="mandatory">必須</div></div>
         <%= f.text_area :text, placeholder: text_placeholder, class: "form-control item-form-text", rows: "6" %>
         <p class="error-text">商品説明を1000文字以内で入力してください</p>
         <% if @item.errors.include?(:text) %>
@@ -53,7 +53,7 @@
       
       
       <div class="form-group">
-        <%= f.label :state, "商品の状態" %>
+        <div class="label">商品の説明<div class="mandatory">必須</div></div>
         <%= f.select :state,
             [["新品未使用", "新品未使用"], ["未使用に近い", "未使用に近い"], ["目立った傷や汚れなし","目立った傷や汚れなし"], ["やや傷や汚れあり","やや傷や汚れあり"], ["傷や汚れあり","傷や汚れあり"], ["全体的に状態が悪い","全体的に状態が悪い"]],
             {include_blank: "選択してください"}, {autofocus: true, class: "form-control item-form-state"} %>
@@ -71,7 +71,7 @@
       
       
       <div class="form-group">
-        <%= f.label :shipping_charge, "配送料の負担" %>
+        <div class="label">配送料の負担<div class="mandatory">必須</div></div>
         <%= f.select :shipping_charge, [["送料込み(出品者負担)", "送料込み(出品者負担)"], ["着払い(購入者負担)", "着払い(購入者負担)"]],
                                        {include_blank: "選択してください"}, {autofocus: true, class: "form-control item-form-shipping_charge"} %>
         <p class="error-shipping_charge">選択してください</p>
@@ -88,7 +88,7 @@
       
       
       <div class="form-group">
-        <%= f.label :shipping_method, "配送の方法" %>
+        <div class="label">配送の方法<div class="mandatory">必須</div></div>
         <%= f.select :shipping_method,
             [["未定", "未定"], ["らくらくメルカリ便", "らくらくメルカリ便"], ["ゆうゆうメルカリ便", "ゆうゆうメルカリ便"], ["ゆうメール", "ゆうメール"], ["レターパック", "レターパック"], ["普通郵便(定形,定形外)", "普通郵便(定形,定形外)"], ["クロネコヤマト", "クロネコヤマト"], ["ゆうパック", "ゆうパック"], ["クリックポスト", "クリックポスト"], ["ゆうパケット", "ゆうパケット"]],
             {include_blank: "選択してください"}, {autofocus: true, class: "form-control item-form-shipping_method"} %>
@@ -106,7 +106,7 @@
       
       
       <div class="form-group">
-        <%= f.label :region, "発送元の地域" %>
+        <div class="label">配送元の地域<div class="mandatory">必須</div></div>
         <%= f.select :region,
             [["北海道", "北海道"], ["青森県", "青森県"], ["岩手県", "岩手県"], ["宮城県", "宮城県"],["秋田県", "秋田県"], ["山形県", "山形県"], ["福島県", "福島県"], ["茨城県", "茨城県"], 
             ["栃木県", "栃木県"], ["群馬県", "群馬県"], ["埼玉県", "埼玉県"], ["千葉県", "千葉県"], ["東京都", "東京都"], ["神奈川県", "神奈川県"], ["新潟県", "新潟県"], ["富山県", "富山県"],
@@ -129,7 +129,7 @@
       
       
       <div class="form-group">
-        <%= f.label :shipping_date, "発送までの日数" %>
+        <div class="label">発送までの日数<div class="mandatory">必須</div></div>
         <%= f.select :shipping_date,
             [["1~2日で発送", "1~2日で発送"], ["2~3日で発送", "2~3日で発送"], ["4~7日で発送", "4~7日で発送"]], 
             {include_blank: "選択してください"}, {autofocus: true, class: "form-control item-form-shipping_date"} %>
@@ -147,7 +147,7 @@
       
       
       <div class="form-group form-price">
-        <%= f.label :price, "商品価格", class: "price-label" %>
+        <div class="label price-label">商品価格<div class="mandatory">必須</div></div>
         <span class="price-mark">¥</span>
         <%= f.text_field :price, placeholder: "0", class: "form-control w-50 price-field item-form-price" %>
         <p class="error-price">300~9999999で入力してください</p>

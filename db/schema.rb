@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200908073120) do
+ActiveRecord::Schema.define(version: 20200920124300) do
 
   create_table "comments", force: :cascade do |t|
     t.text "body"
@@ -48,6 +48,17 @@ ActiveRecord::Schema.define(version: 20200908073120) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.integer "sender_id"
+    t.integer "receiver_id"
+    t.integer "comment_id"
+    t.string "action"
+    t.boolean "checked", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "item_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -57,6 +68,24 @@ ActiveRecord::Schema.define(version: 20200908073120) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "first_reading"
+    t.string "last_reading"
+    t.integer "postal_code"
+    t.string "prefecture"
+    t.string "municipality"
+    t.string "address"
+    t.string "building_name"
+    t.integer "phone_number"
+    t.string "real_name"
+    t.string "real_reading"
+    t.string "birthday"
+    t.integer "real_postal_code"
+    t.string "real_prefecture"
+    t.string "real_municipality"
+    t.string "real_address"
+    t.string "real_building_name"
   end
 
 end

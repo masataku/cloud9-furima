@@ -7,7 +7,7 @@
       
       <div class="col-sm-4">
         <div class="box-1">
-        <%= render 'side_menu' %>
+        <%= render 'shared/side_menu' %>
         </div>
       </div>
       
@@ -24,12 +24,12 @@
               出品数<%= @user.saling_items.count + @user.sold_items.count %>
             </div>
           </div>
-          <div class="user-top-low">
-            <div class="row bar-type">
+          <div class="row bar-type">
             <div class="col-sm-6 bar-type-active">お知らせ</div>
             <div class="col-sm-6">やることリスト</div>
-            <div id="user-index">sssss</div>
-          </div>
+          </div>  
+            <%= render 'notifications/index' %>
+          
           <!--<% if @user.id == @current_user.id %>-->
           <!--  <%= link_to "情報の編集", edit_user_path(@current_user) %>-->
           <!--<% end %>  -->

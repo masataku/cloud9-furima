@@ -1,7 +1,6 @@
 
 <% @items.each do |item| %>
 <div id="user-index" onclick='window.location="<%= item_path(item) %>"' role="link">
-  <%= item.id %>
   <% if current_page?("/users/#{@current_user.id}/like_index") %>
     <% if item.buyer %>
     <div class="like_index-sold-mark">
@@ -15,7 +14,7 @@
   <p class="p-1"><%= item.name %></p>
   <% if current_page?("/users/#{item.saler_id}/saling_index") %>
     <p class="p-2">
-      <%= fa_icon "heart-o", class: "index-item-icon-1"%>&nbsp;<%= item.likes.count %>&emsp;<%= fa_icon "comment-o" %>&nbsp;<%= item.comments.count %>
+      <%= fa_icon "heart-o" %>&nbsp;<%= item.likes.count %>&emsp;<%= fa_icon "comment-o" %>&nbsp;<%= item.comments.count %>
     </p>
     <div class="saling-mark">出品中</div>
   <% elsif current_page?("/users/#{item.saler_id}/sold_index") %>
@@ -26,7 +25,7 @@
     <div class="sold-mark">購入済</div>
   <% end %>
   
-  <%= fa_icon "chevron-right", class: "index-item-icon-2" %>
+  <%= fa_icon "chevron-right", class: "index-item-icon" %>
   
 </div>
 <% end %>

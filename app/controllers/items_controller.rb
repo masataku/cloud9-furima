@@ -65,7 +65,7 @@ class ItemsController < ApplicationController
   
   def destroy
     @item.destroy
-    redirect_to "/userss/#{@current_user.id}/saling_index", notice: "商品を削除しました"
+    redirect_to "/users/#{@current_user.id}/saling_index", notice: "商品を削除しました"
   end
   
   

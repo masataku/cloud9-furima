@@ -1,72 +1,137 @@
 <div id=<%= "page-wrapper" if current_page?(new_user_path) %>>
   <% if @user.new_record? %>
-      <h2>新規登録</h2>
-    <% end %>  
+    <h2>新規登録</h2>
+  <% end %>  
   <div class="page-container">
-    <% unless @user.new_record? %><div class="profile">プロフィール</div><% end %> 
-    <div class="page">
-    <%= form_for @user do |f| %>
-      <% if @user.new_record? %>
-      
-      <div class="form-group">
-        <%= f.label :image, "画像" %><br>
-        <%= f.file_field :image, class: "form-control-file" %>
-      </div><br>
-    
-      <div class="form-group">
-        <%= f.label :name, "ユーザー名" %><br>
-        <%= f.text_field :name, class: "form-control", placeholder: "名前を入力してください" %>
-        <% if @user.errors.include?(:name) %>
-          <%= @user.errors.full_messages_for(:name).first %>
-        <% end %>  
-      </div><br>
-        
-      
-      <div class="form-group">
-        <%= f.label :email, "メールアドレス" %><br>
-        <%= f.text_field :email, class: "form-control", placeholder: "メールアドレスを入力してください" %>
-        <% if @user.errors.include?(:email) %>
-          <%= @user.errors.full_messages_for(:email).first %>
-        <% end %>  
-      </div><br>
-
-      
-      <div class="form-group">
-        <%= f.label :password, "パスワード" %><br>
-        <%= f.password_field :password, class: "form-control", placeholder: "パスワードを入力してください" %>
-        <% if @user.errors.include?(:password) %>
-          <%= @user.errors.full_messages_for(:password).first %>
-        <% end %>  
-      </div>
-      
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input">
-        <label class="form-check-label">パスワードを表示</label>
-      </div><br><br>
-      
-        <%= f.submit "登録する", class: "form-btn-red" %>
-      
-      <% else %>
-      
-      <div class="edit-page">
-        <%= image_tag "/user_images/#{@user.image}", class: "user-top-image edit-image", onClick: "$('.edit-up-file').click()" %>
-        <%= f.file_field :image, class: "edit-up-file", style: "display:none;" %>
-        <%= f.text_field :name, class: "edit-name" %>
-      </div>
-      
-      <div class="edit-form-body">
-        <div class="form-group">
-          <%= f.label :text, "自己紹介" %><br>
-          <%= f.text_area :text, class: "edit-body", placeholder: "自己紹介文を書こう", rows: "8" %>
-          <% if @user.errors.include?(:text) %>
-            <%= @user.errors.full_messages_for(:text).first %>
-          <% end %>  
-        </div>
-        <%= f.submit "変更する", class: "form-btn-red" %>
-      </div><br>
-      
-      <% end %>
+    <% if current_page?("/users/#{@user.id}/edit") %>
+      <div class="heading">プロフィール</div>
+    <% elsif current_page?(users_addressee_path) %>
+      <div class="heading">発送元・お届け先住所変更</div>
     <% end %> 
-    </div>
+    
+    <%= form_for @user do |f| %>
+      <% if @user.new_record? || current_page?(users_addressee_path) %>
+        <div class="page">  
+          <div class=<%= "edit-container" if current_page?(users_addressee_path) %>>
+            <div class="form-group">
+              <div class="label">お名前<div class="mandatory">必須</div></div>
+              <%= f.text_field :last_name, class: "form-control", placeholder: "例) 山田" %><br>
+              <%= f.text_field :first_name, class: "form-control", placeholder: "例) 太郎" %>
+            </div><br>
+            
+            <div class="form-group">
+              <div class="label">お名前カナ<div class="mandatory">必須</div></div>
+              <%= f.text_field :last_reading, class: "form-control", placeholder: "例) ヤマダ" %><br>
+              <%= f.text_field :first_reading, class: "form-control", placeholder: "例) タロウ" %>
+            </div><br> 
+            
+            <div class="form-group">
+              <div class="label">郵便番号<div class="mandatory">必須</div></div>
+              <%= f.text_field :postal_code, class: "form-control", placeholder: "例) 123-4567" %>
+            </div><br>
+            
+            <div class="form-group">
+              <div class="label">都道府県<div class="mandatory">必須</div></div>
+              <%= f.select :prefecture,
+                [["北海道", "北海道"], ["青森県", "青森県"], ["岩手県", "岩手県"], ["宮城県", "宮城県"],["秋田県", "秋田県"], ["山形県", "山形県"], ["福島県", "福島県"], ["茨城県", "茨城県"], 
+                ["栃木県", "栃木県"], ["群馬県", "群馬県"], ["埼玉県", "埼玉県"], ["千葉県", "千葉県"], ["東京都", "東京都"], ["神奈川県", "神奈川県"], ["新潟県", "新潟県"], ["富山県", "富山県"],
+                ["石川県", "石川県"], ["福井県", "福井県"], ["山梨県", "山梨県"], ["長野県", "長野県"], ["岐阜県", "岐阜県"], ["静岡県", "静岡県"], ["愛知県", "愛知県"], ["三重県", "三重県"], ["滋賀県", "滋賀県"], 
+                ["京都府", "京都府"], ["大阪府", "大阪府"], ["兵庫県", "兵庫県"], ["奈良県", "奈良県"], ["和歌山県", "和歌山県"], ["鳥取県", "鳥取県"], ["島根県", "島根県"], ["岡山県", "岡山県"], ["広島県", "広島県"], 
+                ["山口県", "山口県"], ["徳島県", "徳島県"], ["香川県", "香川県"], ["愛媛県", "愛媛県"], ["高知県", "高知県"], ["福岡県", "福岡"], ["佐賀県", "佐賀県"], ["長崎県", "長崎県"], ["熊本県", "熊本県"], ["大分県", "大分県"], 
+                ["宮崎県", "宮崎県"], ["鹿児島県", "鹿児島県"], ["沖縄県", "沖縄県"], ["未定", "未定"]], 
+                {include_blank: "選択してください"}, {autofocus: true, class: "form-control"} %>
+            </div><br>
+            
+            <div class="form-group">
+              <div class="label">市区町村<div class="mandatory">必須</div></div>
+              <%= f.text_field :municipality, class: "form-control", placeholder: "例) 横浜市緑区" %>
+            </div><br>
+            
+            <div class="form-group">
+              <div class="label">番地<div class="mandatory">必須</div></div>
+              <%= f.text_field :address, class: "form-control", placeholder: "例) 青山1-1-1" %>
+            </div><br>
+            
+            <div class="form-group">
+              <div class="label">建物名<div class="any">任意</div></div>
+              <%= f.text_field :building_name, class: "form-control", placeholder: "例) ハイツ山田101" %>
+            </div><br>
+            
+            <div class="form-group">
+              <div class="label">電話<div class="any">任意</div></div>
+              <%= f.text_field :phone_number, class: "form-control", placeholder: "例) 090-1234-5678" %>
+            </div><br>
+          
+          <% if current_page?(users_addressee_path) %>
+            <%= f.submit "変更する", class: "form-btn-red" %>
+          <% end %>
+          </div>  
+        </div>
+      
+        <% if @user.new_record? %>
+          <div class="page page-2">
+            <div class="form-group">
+              <%= f.label :image, "画像", class: "label" %><br>
+              <%= f.file_field :image, class: "form-control-file" %>
+            </div><br>
+          
+            <div class="form-group">
+              <%= f.label :name, "ユーザー名", class: "label" %><br>
+              <%= f.text_field :name, class: "form-control", placeholder: "名前を入力してください" %>
+              <% if @user.errors.include?(:name) %>
+                <%= @user.errors.full_messages_for(:name).first %>
+              <% end %>  
+            </div><br>
+              
+            
+            <div class="form-group">
+              <%= f.label :email, "メールアドレス", class: "label" %><br>
+              <%= f.text_field :email, class: "form-control", placeholder: "メールアドレスを入力してください" %>
+              <% if @user.errors.include?(:email) %>
+                <%= @user.errors.full_messages_for(:email).first %>
+              <% end %>  
+            </div><br>
+      
+            
+            <div class="form-group">
+              <%= f.label :password, "パスワード", class: "label" %><br>
+              <%= f.password_field :password, class: "form-control", placeholder: "パスワードを入力してください" %>
+              <% if @user.errors.include?(:password) %>
+                <%= @user.errors.full_messages_for(:password).first %>
+              <% end %>  
+            </div>
+            
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input">
+              <label class="form-check-label">パスワードを表示</label>
+            </div><br><br>
+            
+              <%= f.submit "登録する", class: "form-btn-red" %>
+          </div> 
+        <% end %>
+      
+      <% elsif current_page?("/users/#{@user.id}/edit") %>
+        <div class="page">
+          <div class="edit-page">
+            <%= image_tag "/user_images/#{@user.image}", class: "user-top-image edit-image", onClick: "$('.edit-up-file').click()" %>
+            <%= f.file_field :image, class: "edit-up-file", style: "display:none;" %>
+            <%= f.text_field :name, class: "edit-name" %>
+          </div>
+          
+          <div class="edit-form-body">
+            <div class="form-group">
+              <%= f.label :text, "自己紹介" %><br>
+              <%= f.text_area :text, class: "edit-body", placeholder: "自己紹介文を書こう", rows: "8" %>
+              <% if @user.errors.include?(:text) %>
+                <%= @user.errors.full_messages_for(:text).first %>
+              <% end %>  
+            </div>
+            <%= f.submit "変更する", class: "form-btn-red" %>
+          </div><br>
+        </div>
+      <% end %>
+      
+    
+    <% end %>
   </div>
 </div>

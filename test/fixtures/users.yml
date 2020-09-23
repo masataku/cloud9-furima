@@ -2,15 +2,33 @@
 #
 # Table name: users
 #
-#  id         :integer          not null, primary key
-#  name       :string
-#  email      :string
-#  image      :string
-#  text       :text
-#  point      :integer
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  password   :string
+#  id                 :integer          not null, primary key
+#  name               :string
+#  email              :string
+#  image              :string
+#  text               :text
+#  point              :integer
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  password           :string
+#  first_name         :string
+#  last_name          :string
+#  first_reading      :string
+#  last_reading       :string
+#  postal_code        :integer
+#  prefecture         :string
+#  municipality       :string
+#  address            :string
+#  building_name      :string
+#  phone_number       :integer
+#  real_name          :string
+#  real_reading       :string
+#  birthday           :string
+#  real_postal_code   :integer
+#  real_prefecture    :string
+#  real_municipality  :string
+#  real_address       :string
+#  real_building_name :string
 #
 
 one:

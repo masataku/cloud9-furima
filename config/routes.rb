@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'top#index'
+  get 'users/addressee' => 'users#addressee'
   get 'users/login' => 'users#login_form'
   post 'users/login' => 'users#login'
   get 'users/logout' => 'users#logout'
@@ -8,13 +9,12 @@ Rails.application.routes.draw do
   get 'users/:id/sold_index' => 'users#sold_index'
   get 'users/:id/buyed_index' => 'users#buyed_index'
   get 'users/:id/info_index' => 'users#info_index'
-  resources :users do
-    resources :likes
-  end  
+  resources :users 
   resources :items do
     resources :likes, :comments, only: [:create, :destroy]
   end  
   
+  resources :notifications, only: [:index]
   
   get 'items/:id/buyed' => 'items#buyed'
   

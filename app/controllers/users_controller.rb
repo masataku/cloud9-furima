@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   end  
   
   def show
-    
+    @notifications = Notification.all  
   end  
   
   def new
@@ -55,7 +55,7 @@ class UsersController < ApplicationController
         @user.save
       end
       
-      redirect_to user_path(@user), notice: "編集しました"
+      redirect_to request.referrer, notice: "編集しました"
     else
       render 'edit'
     end  
@@ -84,8 +84,11 @@ class UsersController < ApplicationController
   def logout
     session[:user_id] = nil
     redirect_to root_path, notice: "ログアウトしました"
-  end  
+  end
   
+  def addressee
+    @user = @current_user
+  end
   
   # userのitem一覧
   def like_index
@@ -112,7 +115,7 @@ class UsersController < ApplicationController
   private
   
   def user_params
-    params.require(:user).permit(:name, :email, :text, :password, :image)
+    params.require(:user).permit(:name, :email, :text, :password, :image, :first_name, :last_name, :first_reading, :last_reading, :postal_code, :prefecture, :municipality, :address, :building_name, :phone_number)
   end  
   
   def set_user
