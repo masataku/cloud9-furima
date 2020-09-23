@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'top#index'
+  get 'users/identity' => 'users#identity'
   get 'users/addressee' => 'users#addressee'
   get 'users/login' => 'users#login_form'
   post 'users/login' => 'users#login'

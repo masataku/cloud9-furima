@@ -6,7 +6,7 @@
   margin-top: 30px;
   .box-1{
     table {
-      width: 100%;
+      width: 90%;
       border: #f1f1f1;
       border-width: 1px 0px;
       margin-bottom: 30px;
@@ -14,15 +14,20 @@
       tr { 
         height: 52px;
         padding: 20px 20px;
-        font-size: 13px;
-       
+        font-size: 14px;
         th {
           text-align: left;
           background: white;
           border-width: 1px 0px;
           font-weight: lighter;
         }
-          
+        .active {
+          background: #eaeaea;
+          .table-icon {
+            opacity: 1;
+            left: 4px;
+          }
+        }  
       td {
         background: white;
         border-width: 1px 0px;
@@ -47,8 +52,10 @@
       position: absolute;
       left: 4px;
       transition: 0.3s;
+    } 
+    tr:hover .active {
+      background: #eaeaea;
     }
-    
   }
   
   .box-2 {

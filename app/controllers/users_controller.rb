@@ -90,6 +90,10 @@ class UsersController < ApplicationController
     @user = @current_user
   end
   
+  def identity
+    @user = @current_user
+  end  
+  
   # userのitem一覧
   def like_index
     @items = @current_user.like_items.order(created_at: :desc)
@@ -115,7 +119,7 @@ class UsersController < ApplicationController
   private
   
   def user_params
-    params.require(:user).permit(:name, :email, :text, :password, :image, :first_name, :last_name, :first_reading, :last_reading, :postal_code, :prefecture, :municipality, :address, :building_name, :phone_number)
+    params.require(:user).permit(:name, :email, :text, :password, :image, :first_name, :last_name, :first_reading, :last_reading, :postal_code, :prefecture, :municipality, :address, :building_name, :phone_number, :real_name, :real_reading, :birthday, :real_postal_code, :real_prefecture, :real_municipality, :real_address, :real_building_name)
   end  
   
   def set_user
