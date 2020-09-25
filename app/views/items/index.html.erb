@@ -1,37 +1,38 @@
 <div id="item-index-wrapper">
   <div class="container">
-    <h1>商品一覧</h1>
-    <div class="index-items row">
-      <% @items.each do |item| %>
-      <div class="col-md-3">
-        <div class="items-box">
-        <%= link_to item, {class: "item-link"} do %>
-          <div class="index-img">
-            <% if item.buyer %>
-            <div class="index-sold-mark">
-              <p>SOLD</p>
+    <div class="top-box">
+      <h3>&nbsp;&nbsp;商品一覧</h3>
+      <div class="index-items row">
+        <% @items.each do |item| %>
+        <div class="col-md-3">
+          <div class="items-box">
+          <%= link_to item, {class: "item-link"} do %>
+            <div class="index-img">
+              <% if item.buyer %>
+              <div class="index-sold-mark">
+                <p>SOLD</p>
+              </div>
+              <% end %>
+                <%= image_tag "/item_images/#{item.image}", class: "index-img", height: "180px", width: "100%" %>
+               <div class="index-price">
+                  ¥<%= item.price %>
+               </div>
             </div>
-            <% end %>
-              <%= image_tag "/item_images/#{item.image}", class: "index-img", height: "180px", width: "100%" %>
-             <div class="index-price">
-                ¥<%= item.price %>
-             </div>
+            　
+            <div class="index-item-body">
+               <p><%= item.name.truncate(20, omission: "…") %></p>
+               <div class="index-item-like"><%= fa_icon "heart-o" %>&nbsp;<%= item.likes.count %></div>
+            </div>
+               
+               
+            
+          <% end %>
           </div>
-          　
-          <div class="index-item-body">
-             <p><%= item.name.truncate(20, omission: "…") %></p>
-             <div class="index-item-like"><%= fa_icon "heart-o" %>&nbsp;<%= item.likes.count %></div>
-          </div>
-             
-             
-          
+        </div>  
         <% end %>
-        </div>
-      </div>  
-      <% end %>
-    </div>
+      </div>
   
     <%= render 'shared/display_btn' %>
-    
+    </div>
   </div> 
 </div>

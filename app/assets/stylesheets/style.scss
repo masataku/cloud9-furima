@@ -20,6 +20,8 @@ footer {
 }
 
 body {
+  position: relative;
+  z-index: 1;
   background: #f1f1f1;
   height: 100%;
   width: 100%;
@@ -27,6 +29,22 @@ body {
   padding: 0;
 }
 
+.notice-bar {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  animation: fadeOut 8s ease 0s;
+  opacity: 0;
+  .notice-btn {
+    cursor: default;
+  }
+}
+@keyframes fadeOut {
+  0% {opacity: 0;}
+  30% {opacity: 1;}
+  60% {opacity: 1;}
+  100% {opacity: 0;}
+}
 
 li {
   list-style: none;

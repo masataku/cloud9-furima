@@ -1,49 +1,81 @@
 <div id="item-index-wrapper">
   <div class="container">
-    <h1>新着アイテム</h1>
-    <div class="index-items row">
-      <% @items.each do |item| %>
-      <div class="col-md-3">
-        <div class="items-box">
-        <%= link_to item, {class: "item-link"} do %>
-        <!--<div class="card item-card">-->
-          <div class="index-img">
-            <% if item.buyer %>
-            <div class="index-sold-mark">
-              <p>SOLD</p>
-            </div>
-            <% end %>
-            <%= image_tag "/item_images/#{item.image}", class: "index-img", height: "180px", width: "100%" %>
-            <div class="index-price">
-              ¥<%= item.price %>
-            </div>
+    <% if @current_user %>
+    <div class="like-items-box">
+      <div class="top-box">
+        <h5>いいね！した商品</h5>
+        <div class="index-items row">
+        <% @like_items.each do |like_item| %>
           
-          </div>
-          　
-          <div class="index-item-body">
-            <p><%= item.name.truncate(20, omission: "…") %></p>
-            <% if @current_user && Like.find_by(user_id: @current_user.id, item_id: item.id) %>
-              <div class="index-item-like"><%= fa_icon "heart", style: "color:red;", class: "heart" %>&nbsp;<%= item.likes.count %></div>
-            <% else %>   
-              <div class="index-item-like"><%= fa_icon "heart-o" %>&nbsp;<%= item.likes.count %></div>
+            <div class="items-box">
+            <%= link_to like_item, {class: "item-link"} do %>
+              <div class="index-img">
+                <% if like_item.buyer %>
+                <div class="index-sold-mark">
+                  <p>SOLD</p>
+                </div>
+                <% end %>
+                <%= image_tag "/item_images/#{like_item.image}", class: "index-img like-item-img", height: "140px", width: "140px" %>
+                <div class="index-price">
+                  ¥<%= like_item.price %>
+                </div>
+              
+              </div>
             <% end %>  
-          </div>
-             
-             
+            </div>
           
         <% end %>
+        <%= link_to "すべて見る >", "/users/#{@current_user.id}/like_index", class: "link-like-index" %>
         </div>
       </div>  
-      <% end %>
-      <%= link_to(items_path) do %>
-        <p class="see-more">もっと見る&emsp;></p>
-      <% end %>
-    </div>
-  
+    </div><br><br><br>
+    <% end %>
+    <div class="top-box">
+    <h3>&nbsp;&nbsp;新着アイテム</h3>
+      <div class="index-items row">
+        <% @items.each do |item| %>
+        <div class="col-md-3">
+          <div class="items-box">
+          <%= link_to item, {class: "item-link"} do %>
+            <div class="index-img">
+              <% if item.buyer %>
+              <div class="index-sold-mark">
+                <p>SOLD</p>
+              </div>
+              <% end %>
+              <%= image_tag "/item_images/#{item.image}", class: "index-img", height: "180px", width: "100%" %>
+              <div class="index-price">
+                ¥<%= item.price %>
+              </div>
+            
+            </div>
+            　
+            <div class="index-item-body">
+              <p><%= item.name.truncate(20, omission: "…") %></p>
+              <% if @current_user && Like.find_by(user_id: @current_user.id, item_id: item.id) %>
+                <div class="index-item-like"><%= fa_icon "heart", style: "color:red;", class: "heart" %>&nbsp;<%= item.likes.count %></div>
+              <% else %>   
+                <div class="index-item-like"><%= fa_icon "heart-o" %>&nbsp;<%= item.likes.count %></div>
+              <% end %>  
+            </div>
+               
+               
+            
+          <% end %>
+          </div>
+        </div>  
+        <% end %>
+      </div>
+    
   <% if @current_user %>  
     <%= render 'shared/display_btn' %>
   <% end %>  
-    
+    </div>
+    <div class="see-more">
+        <%= link_to(items_path) do %>
+          <p>もっと見る ></p>
+        <% end %>
+        </div>
   </div> 
 </div>
 
