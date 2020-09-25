@@ -112,11 +112,7 @@
   
   <div class="page-container">
     <div class="page">
-      <% @comments.each do |comment| %>
-      <div class="comment-box">
-        <p><%= simple_format(comment.body) %><%= time_ago_in_words comment.created_at %>前&emsp;&emsp;<%= link_to("/items/#{@item.id}/comments/#{comment.id}",class: "comment-delete", method: :delete, data: {confirm: "このコメントを本当に削除してもよろしいですか?"}) do %><%= fa_icon "trash" %><% end %><%= comment.user.name %></p>
-      </div><br>
-      <% end %>
+      <%= render '/comments/index' %>
       <p class="comment-warning">相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。</p>
       コメント
       <%= render '/comments/form' %>

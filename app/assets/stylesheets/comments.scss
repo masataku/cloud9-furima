@@ -6,16 +6,113 @@
   background: #ffffcc;
   font-size: 0.8rem;
   padding: 6px 6px;
-  margin-top: -20px;
 }
 
-.comment-delete {
-  color: gray;
+
+
+.saler-comment-box {
+  position: relative;
+  margin-bottom: 80px;
+  padding: 1px 20px;
+  border-radius: 15px 15px;
+  width: 90%;
+  background: #fbf0e6;
+  .saler-balloon {
+    position: absolute;
+    top: 5px;
+    right: -8px;
+    height: 0;
+    width: 0;
+    border-top: 10px solid #fbf0e6;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid #fbf0e6;
+  }
+  .p2 {
+    font-size: 0.8rem;
+    opacity: 0.5;
+    .comment-delete {
+      position: absolute;
+      right: 20px;
+      font-size: 1.1rem;
+      color: black;
+    }
+  }
+  .saler-image {
+    position: absolute;
+    top: -25px;
+    right: -54px;
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+  }
+  .saler-name {
+    position: absolute;
+    top: -25px;
+    right: 0;
+    color: red;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+  .saler {
+    position: absolute;
+    top: 25px;
+    right: -54px;
+    background: #fef0e6;
+    padding: 2px 5px;
+    font-size: 0.7rem;
+    border-radius: 2px 2px;
+  }
 }
 
-.comment-box {
-  background: #ccffff;
-  padding: 10px 10px;
+
+  
+.buyer-comment-box {
+  position: relative;
+  margin-bottom: 80px;
+  margin-left: 60px;
+  padding: 1px 20px;
+  border-radius: 15px 15px;
+  width: 90%;
+  background: #eef0f4;
+  .buyer-balloon {
+    position: absolute;
+    top: 5px;
+    left: -8px;
+    height: 0;
+    width: 0;
+    border-top: 10px solid #eef0f4;
+    border-right: 10px solid #eef0f4;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid transparent;
+  }
+  .p2 {
+    font-size: 0.8rem;
+    opacity: 0.5;
+    .comment-delete {
+    position: absolute;
+    right: 20px;
+    font-size: 1.1rem;
+    color: black;
+    }
+  }
+  
+  
+  .buyer-image {
+    position: absolute;
+    top: -25px;
+    left: -54px;
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+  }
+  .buyer-name {
+    position: absolute;
+    top: -25px;
+    left: 0;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
 }
 
 .forbid-comment-btn {
