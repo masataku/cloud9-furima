@@ -3,20 +3,23 @@ class UsersController < ApplicationController
   before_action :forbid_login_user, {only: [:new, :create, :login_form, :login]}
   before_action :existence_user, {only: [:show, :edit, :update, :destroy]}
   before_action :ensure_correct_user, {only: [:edit, :update, :destroy]}
-  before_action :set_user, {only: [:show, :edit, :update, :destroy, :saling_index, :sold_index, :like_index, :buyed_index, :info_index
+  before_action :set_user, {only: [:show, :edit, :update, :destroy, :saling_index, :sold_index, :like_index, :buyed_index, :info_index, :user_page
   ]}
   def index
     @users = User.all.order(id: :desc)
     
-  end  
+  end 
+  
   
   def show
     @notifications = Notification.all  
   end  
   
+  
   def new
     @user = User.new
   end  
+  
   
   def create
     @user = User.new(user_params)
@@ -37,12 +40,13 @@ class UsersController < ApplicationController
     end  
   end
   
+  
   def edit
     
   end
   
+  
   def update
-    
     img = user_params[:image]
     
     if @user.update(user_params)
@@ -61,6 +65,7 @@ class UsersController < ApplicationController
     end  
   end  
   
+  
   def destroy
     items = @user.saling_items
     @user.destroy 
@@ -68,9 +73,11 @@ class UsersController < ApplicationController
     redirect_to root_path, notice: "退会しました"
   end
   
+  
   def login_form
     @user = User.new
-  end  
+  end 
+  
   
   def login
     if @user = User.find_by(user_params)
@@ -79,20 +86,29 @@ class UsersController < ApplicationController
     else
       redirect_to users_login_path, notice: "メールアドレスかパスワードが間違っています"
     end  
-  end  
+  end 
+  
   
   def logout
     session[:user_id] = nil
     redirect_to root_path, notice: "ログアウトしました"
   end
   
+  
+  def user_page
+    @items = Item.where(saler_id: @user).order(created_at: :desc)
+  end
+  
+  
   def addressee
     @user = @current_user
   end
   
+  
   def identity
     @user = @current_user
   end  
+  
   
   # userのitem一覧
   def like_index
@@ -115,6 +131,8 @@ class UsersController < ApplicationController
     @items = @user.saling_items
     
   end
+  
+  
   
   private
   

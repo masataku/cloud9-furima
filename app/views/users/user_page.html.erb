@@ -1,0 +1,22 @@
+<div id="page-wrapper">
+  <div class="page-container">
+    <div class="user-page-top">
+      <%= image_tag "/user_images/#{@user.image}", class: "user-page-user", height: "190px", width: "190px" %><br>
+      <div class="user-page-name"><%= @user.name %></div><br>
+      <div class="user-page-item-count">出品数<%= @user.saling_items.count + @user.sold_items.count %></div>
+    </div>
+    <div class="page">
+      <%= simple_format(@user.text) %>
+    </div>
+  
+    <div id="user-page-box">
+      <div class="top-box">
+        <h3>&nbsp;この出品者の商品</h3>
+        <div class="index-items">
+          <%= render 'shared/items' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render 'shared/display_btn' %>

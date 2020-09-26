@@ -4,6 +4,7 @@
 
 .user-box {
   margin-top: 30px;
+  margin-bottom: 30px;
   z-index: 2;
   .box-1{
     table {
@@ -207,3 +208,24 @@
   cursor: pointer;
 }
 // //////////////
+
+// user_page用
+.user-page-top {
+  background-image: url("background.jpg");
+  background-size: cover;
+  height: 340px;
+  text-align: center;
+  .user-page-user {
+    margin-top: 50px;
+    border-radius: 50%;
+  }
+  .user-page-name {
+    margin-top: 20px;
+    margin-bottom: -10px;
+    font-size: 1.2rem;
+  }
+  .user-page-item-count {
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+}
