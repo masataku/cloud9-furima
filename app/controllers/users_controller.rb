@@ -105,6 +105,11 @@ class UsersController < ApplicationController
   end
   
   
+  def password
+    @user = @current_user
+  end  
+  
+  
   def identity
     @user = @current_user
   end  

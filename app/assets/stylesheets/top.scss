@@ -124,6 +124,19 @@
   .top-box {
     width: 100%;
     margin: 0 auto;
+    h4 {
+      margin-bottom: -10px;
+      font-weight: 600;
+    }
+    h5 {
+      border-top: solid 5px #f5f5f5;
+      padding-top: 10px;
+      margin-bottom: 0px;
+      font-weight: 600;
+      &:hover {
+        opacity: 0.6;
+      }
+    }
     .index-items {
       position: relative;
       .items-box {

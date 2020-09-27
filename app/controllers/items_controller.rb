@@ -10,6 +10,8 @@ class ItemsController < ApplicationController
   
   
   def show
+    @user = @item.saler
+    @items = Item.where(saler_id: @user).order(created_at: :desc).limit(9)
     @like = @current_user.likes.find_or_initialize_by(item: @item)
     @comment = Comment.new
     @comments = @item.comments

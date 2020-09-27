@@ -17,11 +17,11 @@
         <div class="box-2">
           <div class="user-top">
             <div>
-              <%= link_to edit_user_path do %>
-              <%= image_tag "/user_images/#{@user.image}", class: "user-top-image" %><br>
-              <% end %>
-              <%= @user.name %><br>
-              出品数<%= @user.saling_items.count + @user.sold_items.count %>
+              <%= link_to "/users/#{@user.id}/user_page", {class: "user-top-link"} do %>
+                <%= image_tag "/user_images/#{@user.image}", class: "user-top-image" %><br>
+                <%= @user.name %><br>
+                出品数<%= @user.saling_items.count + @user.sold_items.count %>
+              <% end %>  
             </div>
           </div>
           <div class="row bar-type">

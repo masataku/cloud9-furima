@@ -1,4 +1,4 @@
-// form
+// よく使うpageのレイアウト
 #page-wrapper {
   margin-top: 20px;
   h2 {
@@ -28,12 +28,16 @@
    
   }
 }
+// ////////////////////////////////////////
+
+// formのlabel//////////////////
 .label {
   position: relative;
   display: inline-block;
   margin-bottom: 4px;
   font-size: 0.8rem;
   font-weight: 600;
+  // 「必須」マーク
   .mandatory {
     position: absolute;
     margin-left: 10px;
@@ -47,6 +51,7 @@
     font-weight: 200;
     border-radius: 2px 2px;
   }
+  // 「任意」マーク
   .any {
     position: absolute;
     margin-left: 10px;
@@ -62,24 +67,36 @@
     border-radius: 2px 2px;
   }
 }  
+//////////////////////////////////
+
+
+
+// user情報の編集ページいろいろ///////////////////
+// 本人情報page用container
 .identity-container {
   padding: 30px 60px;
   font-size: 0.85rem;
 }
+// ////////////////////////
 
+// プロフィール・発送元/お届け先住所・メール/パスワードpage用container
 .edit-container {
   padding: 30px 180px;
 }
-// user edit
+// ///////////////////////
+
+// user情報編集ページのheading
 .heading {
   border-bottom: solid 2px #f1f1f1;
   height: 58px;
   line-height: 58px;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 600;
 }
+// /////////////////////////////
 
+// プロフィールpage用
 .edit-page {
   position: relative;
   height: 170px;
@@ -111,4 +128,4 @@
     }
   }
 }
-// ////////////
+// ///////////////////////////////

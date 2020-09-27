@@ -2,7 +2,9 @@
   <% if @item.saler == comment.user %>
     <div class="saler-comment-box">
       <div class="saler-balloon"></div>
-      <%= image_tag "/user_images/#{comment.user.image}", class: "saler-image" %><div class="saler-name"><%= comment.user.name %></div><div class="saler">出品者</div>
+      <%= link_to("/users/#{comment.user_id}/user_page", {class: "user-top-link"}) do %>
+        <%= image_tag "/user_images/#{comment.user.image}", class: "saler-image" %><div class="saler-name"><%= comment.user.name %></div><div class="saler">出品者</div>
+      <% end %>
       <p class="p1"><%= simple_format(comment.body) %></p>
       <p class="p2"><%= fa_icon "history" %>&nbsp;<%= time_ago_in_words comment.created_at %>前
       <%= link_to("/items/#{@item.id}/comments/#{comment.id}",class: "comment-delete", method: :delete, data: {confirm: "このコメントを本当に削除してもよろしいですか?"}) do %><%= fa_icon "trash" %><% end %></p>
@@ -10,7 +12,9 @@
   <% else %>
     <div class="buyer-comment-box">
       <div class="buyer-balloon"></div>
-      <%= image_tag "/user_images/#{comment.user.image}", class: "buyer-image" %><div class="buyer-name"><%= comment.user.name %></div>
+      <%= link_to("/users/#{comment.user_id}/user_page", {class: "user-top-link"}) do %>
+        <%= image_tag "/user_images/#{comment.user.image}", class: "buyer-image" %><div class="buyer-name"><%= comment.user.name %></div>
+      <% end %>
       <p class="p1"><%= simple_format(comment.body) %></p>
       <p class="p2"><%= fa_icon "history" %>&nbsp;<%= time_ago_in_words comment.created_at %>前
       <%= link_to("/items/#{@item.id}/comments/#{comment.id}",class: "comment-delete", method: :delete, data: {confirm: "このコメントを本当に削除してもよろしいですか?"}) do %><%= fa_icon "trash" %><% end %></p>

@@ -7,14 +7,16 @@
       <div class="heading">プロフィール</div>
     <% elsif current_page?(users_addressee_path) %>
       <div class="heading">発送元・お届け先住所変更</div>
+    <% elsif current_page?(users_password_path) %>
+      <div class="heading">メール/パスワード</div>
     <% elsif current_page?(users_identity_path) %>
       <div class="heading">本人情報の登録</div>
     <% end %> 
     
     <%= form_for @user do |f| %>
-      <% if @user.new_record? || current_page?(users_addressee_path) %>
+      <% if @user.new_record? || current_page?(users_addressee_path) || current_page?(users_password_path) %>
         <div class="page">  
-          <div class=<%= "edit-container" if current_page?(users_addressee_path) %>>
+          <div class=<%= "edit-container" if current_page?(users_addressee_path) || current_page?(users_password_path) %>>
           <% if @user.new_record? %>
             <div class="form-group">
               <div class="label">お名前<div class="mandatory">必須</div></div>
@@ -80,6 +82,19 @@
               <%= f.text_field :phone_number, class: "form-control", placeholder: "例) 090-1234-5678" %>
             </div><br>
   
+            <%= f.submit "変更する", class: "form-btn-red" %>
+            
+          <% elsif current_page?(users_password_path) %>
+            <div class="form-group">
+              <div class="label">メールアドレス</div>
+              <%= f.text_field :email, class: "form-control" %>
+            </div><br>
+            
+            <div class="form-group">
+              <div class="label">パスワード</div>
+              <%= f.text_field :password, class: "form-control" %>
+            </div><br>
+            
             <%= f.submit "変更する", class: "form-btn-red" %>
           <% end %>
           </div>  

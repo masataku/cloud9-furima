@@ -30,7 +30,7 @@
       <div class="row">
         <div class="col-md-6">
           <div class="item-box">
-            <%= image_tag "/item_images/#{@item.image}", class: "item-image", width: "300px" %>
+            <%= image_tag "/item_images/#{@item.image}", class: "item-image", height: "300px", width: "300px" %>
             <% if @item.buyer %>
             <div class="sold-mark">
               <p>SOLD</p>
@@ -43,7 +43,7 @@
             <tr>
               <th>出品者</th>
               <% if @item.saler %>
-                <td><%= link_to @item.saler.name, @item.saler %></td>
+                <td><%= link_to @item.saler.name, "/users/#{@item.saler_id}/user_page" %></td>
               <% else %>
                 <td>退会済み</td>
               <% end %>
@@ -135,5 +135,16 @@
     </div>
   </div>  
   <% end %>
+  
+  <div class="page-container">
+    <div id="user-page-box">
+      <div class="top-box">
+        <h5>&nbsp;<%= link_to "#{@item.saler.name}さんのその他の商品", "/users/#{@item.saler_id}/user_page" %></h5>
+        <div class="index-items">
+          <%= render 'shared/items' %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 

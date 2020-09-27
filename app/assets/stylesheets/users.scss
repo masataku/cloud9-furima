@@ -188,12 +188,10 @@
         }
       }
     }
-      
-    
-    
   }
-  
 }
+
+// userのitem一覧のbar
 .bar-type-active {
   background: white;
   border-top: solid 2px red;
@@ -227,5 +225,14 @@
   .user-page-item-count {
     font-size: 0.9rem;
     font-weight: 600;
+  }
+}
+// userアイコンのリンク
+.user-top-link {
+  color: black;
+  &:hover {
+    opacity: 0.8;
+    color: black;
+    text-decoration: none;
   }
 }
