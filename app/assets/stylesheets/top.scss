@@ -6,12 +6,11 @@
 
 .hero {
   background-image: url("rectangle_large_type_2_46ffcfccf4f8a9fb448290dafd69d2c1.jpg");
-  margin-top: -15px;
 }
 
-.jambotron {
-  padding: 6rem 2rem;
-}
+// .jambotron {
+//   padding: 6rem 2rem;
+// }
 
 #item-index-wrapper {
   h5 {
@@ -41,7 +40,7 @@
         box-shadow: 1px 2px 6px 1px
         rgba(0,0,0,0.2);
         &:hover {
-          border: solid 0.1px blue;
+          border: solid 0.1px #3399FF;
         }
         .index-item {
           position: relative;
@@ -146,7 +145,7 @@
         box-shadow: 1px 2px 6px 1px
         rgba(0,0,0,0.2);
         &:hover {
-          border: solid 0.1px blue;
+          border: solid 0.1px #3399FF;
         }
         .index-item {
           position: relative;

@@ -63,7 +63,7 @@
   .box-2 {
     background: white;
     .user-top {
-      background-image: url("background.jpg");
+      background-image: url("/user_images/user_background2.jpeg");
       background-size: cover;
       height: 230px;
       text-align: center;
@@ -124,7 +124,7 @@
         top: 18px;
         left: 90px;
         height: 30px;
-        font-size: 0.8rem;
+        font-size: 0.85rem;
       }
       .p-2 {
         display: inline;
@@ -209,7 +209,7 @@
 
 // user_page用
 .user-page-top {
-  background-image: url("background.jpg");
+  background-image: url("/user_images/user_background2.jpeg");
   background-size: cover;
   height: 340px;
   text-align: center;

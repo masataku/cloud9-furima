@@ -6,7 +6,7 @@
 
 .like-btn {
   width: 130px;
-  padding: 5px 5px;
+  padding: 3px 5px;
   position: relative;
   border-radius: 30px;
   &:focus {
@@ -18,13 +18,13 @@
   }
   .like-text {
     position: absolute;
-    top: 7px;
+    top: 6px;
     left: 40px;
     font-size: 14px;
   }
   .like-count {
     position: absolute;
-    top: 7px;
+    top: 6px;
     right: 15px;
     font-size: 14px;
   }
