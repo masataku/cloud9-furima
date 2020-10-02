@@ -5,7 +5,8 @@ class ItemsController < ApplicationController
   before_action :correct_item_buyer, {only: [:buyed]}
   
   def index
-    @items = Item.all.order(created_at: :desc)
+       @items = @search_items.order(created_at: :desc)
+      # @items = Item.all.order(created_at: :desc)
   end
   
   

@@ -1,9 +1,9 @@
 <div id="item-index-wrapper">
-  <div class="container">
+  <div class="top-container">
     <% if @current_user %>
     <div class="like-items-box">
       <div class="top-box">
-        <h5>いいね！した商品</h5>
+        <h5><strong>いいね！した商品</strong></h5>
         <div class="index-items row">
         <% @like_items.each do |like_item| %>
           
@@ -15,7 +15,7 @@
                   <p>SOLD</p>
                 </div>
                 <% end %>
-                <%= image_tag "/item_images/#{like_item.image}", class: "like-item-img", height: "140px", width: "140px" %>
+                <%= image_tag "/item_images/#{like_item.image}", class: "like-item-img", height: "130px", width: "130px" %>
                 <div class="index-price">
                   ¥<%= like_item.price %>
                 </div>

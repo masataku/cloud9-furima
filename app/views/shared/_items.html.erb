@@ -1,5 +1,5 @@
 <% @items.each do |item| %>
-  <% if current_page?(root_path) || current_page?(items_path) %>
+  <% if current_page?(root_path) %>
   <div class="col-md-3">
   <% end %>  
     <div class="items-box">
@@ -18,7 +18,7 @@
       </div>
          
       <div class="index-item-body">
-        <p><%= item.name.truncate(current_page?(root_path) || current_page?(items_path)? 20 : 13, omission: "…") %></p>
+        <p><%= item.name.truncate(current_page?(root_path) || current_page?(items_path)? 18 : 13, omission: "…") %></p>
         <% if @current_user && Like.find_by(user_id: @current_user.id, item_id: item.id) %>
           <div class="index-item-like"><%= fa_icon "heart", style: "color:red;", class: "heart" %>&nbsp;<%= item.likes.count %></div>
         <% else %>   
@@ -27,7 +27,7 @@
       </div>
     <% end %>
     </div>
-  <% if current_page?(root_path) || current_page?(items_path) %>  
+  <% if current_page?(root_path) %>  
   </div>
   <% end %>
 <% end %>

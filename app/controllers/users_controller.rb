@@ -132,10 +132,7 @@ class UsersController < ApplicationController
     @items = @user.buyed_items.order(buyed_or_sold_time: :desc)
   end
   
-  def info_index
-    @items = @user.saling_items
-    
-  end
+  
   
   
   

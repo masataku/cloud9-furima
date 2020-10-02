@@ -9,15 +9,23 @@
   </head>
 
   <body>
+    <% unless current_page?(new_item_path) || current_page?("/items/#{params[:id]}/edit") %>
     <header>
-      
       <div class="header-box">
         <div class="header-top">
           <div class="header-container">
           <%= link_to(root_path) do %>
             <%= image_tag "logo.svg", height: "38px" %>
           <% end %>
-          <input></input>
+            <div class="header-search-box">
+              <%= search_form_for @search, url: items_path do |f| %>
+                <%= f.text_field :name_cont, placeholder: " 何をお探しですか？", class: "search-field" %>
+                <%= f.button :type => "submit", class: "search-btn" do %>
+                  <%= fa_icon "search", class: "search-icon" %>
+                <% end %>
+              <% end %>
+            </div>
+          
           </div>
         </div>
         <div class="header-midle">
@@ -120,11 +128,13 @@
       <div class="alert-space"></div>
       <% end %> 
     </header>  
+    <% end %>
+    
       <% if current_page?(root_path) %>
         <div class="jumbotron text-center hero">
           <div>
-            <h1>あなたのモノを出品しよう</h1>
-            <p class="lead">フリマサイトです</p>
+            <!--<h1>あなたのモノを出品しよう</h1>-->
+            <!--<p class="lead">フリマサイトです</p>-->
             <%= link_to "いますぐサインアップする", new_user_path, class: "btn btn-primary" unless @current_user %>
           </div>
         </div> 
@@ -134,7 +144,7 @@
     <div class="container content">
       <%= yield %>
     </div>
-    <% unless current_page?(new_item_path || edit_item_path(@item)) %>
+    <% unless current_page?(new_item_path) || current_page?("/items/#{params[:id]}/edit") %>
     <footer>
       <div class="container">
         <strong><h3>mercari</h3></strong>

@@ -61,7 +61,6 @@
   }
   
   .box-2 {
-    background: white;
     .user-top {
       background-image: url("/user_images/user_background2.jpeg");
       background-size: cover;
@@ -102,6 +101,7 @@
       position: relative;
       height: 82px;
       font-size: 0.9rem;
+      background: white;
       // line-height: 82px;
       border-bottom: solid 1px #eaeaea;
       &:hover {

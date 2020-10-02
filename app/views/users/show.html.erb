@@ -1,49 +1,44 @@
 <div class="container">
-  <div class="user-box">
-    <div class="row">
-      
-      
-      <div class="col-sm-4">
-        <div class="box-1">
-        <%= render 'shared/side_menu' %>
-        </div>
+  <div class="user-box row">
+  
+    <div class="col-sm-4">
+      <div class="box-1">
+      <%= render 'shared/side_menu' %>
       </div>
-      
-      
-      
-      <div class="col-sm-8">
-        <div class="box-2">
-          <div class="user-top">
-            <div>
-              <%= link_to "/users/#{@user.id}/user_page", {class: "user-top-link"} do %>
-                <%= image_tag "/user_images/#{@user.image}", class: "user-top-image" %><br>
-                <%= @user.name %><br>
-                出品数<%= @user.saling_items.count + @user.sold_items.count %>
-              <% end %>  
-            </div>
-          </div>
-          <div class="row bar-type">
-            <div class="col-sm-6 bar-type-active">お知らせ</div>
-            <div class="col-sm-6">やることリスト</div>
-          </div>  
-            <%= render 'notifications/index' %>
-          
-          <!--<% if @user.id == @current_user.id %>-->
-          <!--  <%= link_to "情報の編集", edit_user_path(@current_user) %>-->
-          <!--<% end %>  -->
-          
-          <!--・<%= link_to "出品一覧", "/users/#{@user.id}/saling_index" %>・<%= link_to "売却一覧", "/users/#{@user.id}/sold_index" %>・・<%= link_to "いいね一覧", "/users/#{@current_user.id}/like_index" %>・<%= link_to "購入一覧", "/users/#{@user.id}/buyed_index" %>-->
-          
-          
-          
-          <!--<% if @user.id == @current_user.id %>-->
-          <!--  <%= link_to "退会する", user_path(@user), method: :delete, data: {confirm: "ポイント：#{@user.point}Pは消えてしまいます。本当に退会しますか？"} %>-->
-          <!--<% end %>-->
+    </div>
+    
+    <div class="col-sm-8">
+      <div class="box-2">
+        <div class="user-top">
+          <div>
+            <%= link_to "/users/#{@user.id}/user_page", {class: "user-top-link"} do %>
+              <%= image_tag "/user_images/#{@user.image}", class: "user-top-image" %><br>
+              <%= @user.name %><br>
+              出品数<%= @user.saling_items.count + @user.sold_items.count %>
+            <% end %>  
           </div>
         </div>
+        <div class="row bar-type">
+          <div class="col-sm-6 bar-type-active">お知らせ</div>
+          <div class="col-sm-6">やることリスト</div>
+        </div>  
+          <%= render 'notifications/index' %>
+        
+        <!--<% if @user.id == @current_user.id %>-->
+        <!--  <%= link_to "情報の編集", edit_user_path(@current_user) %>-->
+        <!--<% end %>  -->
+        
+        <!--・<%= link_to "出品一覧", "/users/#{@user.id}/saling_index" %>・<%= link_to "売却一覧", "/users/#{@user.id}/sold_index" %>・・<%= link_to "いいね一覧", "/users/#{@current_user.id}/like_index" %>・<%= link_to "購入一覧", "/users/#{@user.id}/buyed_index" %>-->
+        
+        
+        
+        <!--<% if @user.id == @current_user.id %>-->
+        <!--  <%= link_to "退会する", user_path(@user), method: :delete, data: {confirm: "ポイント：#{@user.point}Pは消えてしまいます。本当に退会しますか？"} %>-->
+        <!--<% end %>-->
+        </div>
       </div>
+    </div>
       
-    </div> 
   </div>
 </div>
 

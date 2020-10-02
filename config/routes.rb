@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   get 'users/:id/saling_index' => 'users#saling_index'
   get 'users/:id/sold_index' => 'users#sold_index'
   get 'users/:id/buyed_index' => 'users#buyed_index'
-  get 'users/:id/info_index' => 'users#info_index'
   resources :users 
   resources :items do
     resources :likes, :comments, only: [:create, :destroy]

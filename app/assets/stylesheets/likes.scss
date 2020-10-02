@@ -5,8 +5,8 @@
 // like-btnについて
 
 .like-btn {
-  width: 130px;
-  padding: 3px 5px;
+  width: 125px;
+  padding: 2px 0;
   position: relative;
   border-radius: 30px;
   &:focus {
@@ -14,7 +14,9 @@
   }
   .like-icon {
     position: absolute;
-    left: 15px;
+    top: 4px;
+    left: 16px;
+    font-size: 0.98rem;
   }
   .like-text {
     position: absolute;

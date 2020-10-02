@@ -45,7 +45,7 @@
   border: #f8f8f8;
 } tr {
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
 } th {
   background: #f8f8f8;
   font-weight: 500;
@@ -114,4 +114,26 @@
 @keyframes small-fadeOut {
   0% {transform: scale(1,1)}
   100% {transform: scale(0.2,0.2)}
+}
+
+// itemの詳細検索//////////
+.search-box {
+  background: white;
+  padding: 10px 22px;
+  .search-form-box { 
+    margin-bottom: 30px;
+    .search-form {
+      height: 42px;
+      border: solid 1px #e1e1e1;
+      border-radius: 3px 3px;
+    }
+    .search-text-form {
+      width: 100%;
+    }
+    .search-price-form {
+      display: inline-block;
+      width: 138px;
+      font-size: 0.9rem;
+    }
+  }
 }
