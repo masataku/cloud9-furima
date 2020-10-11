@@ -19,7 +19,7 @@
           <% end %>
             <div class="header-search-box">
               <%= search_form_for @search, url: items_path do |f| %>
-                <%= f.text_field :name_cont, placeholder: " 何をお探しですか？", class: "search-field" %>
+                <%= f.text_field :name_or_text_cont, placeholder: " 何をお探しですか？", class: "search-field" %>
                 <%= f.button :type => "submit", class: "search-btn" do %>
                   <%= fa_icon "search", class: "search-icon" %>
                 <% end %>
@@ -133,8 +133,8 @@
       <% if current_page?(root_path) %>
         <div class="jumbotron text-center hero">
           <div>
-            <!--<h1>あなたのモノを出品しよう</h1>-->
-            <!--<p class="lead">フリマサイトです</p>-->
+            <h1>あなたのモノを出品しよう</h1>
+            <p class="lead">フリマサイトです</p>
             <%= link_to "いますぐサインアップする", new_user_path, class: "btn btn-primary" unless @current_user %>
           </div>
         </div> 

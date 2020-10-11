@@ -119,21 +119,73 @@
 // itemの詳細検索//////////
 .search-box {
   background: white;
-  padding: 10px 22px;
+  padding: 10px 20px;
+  width: 85%;
   .search-form-box { 
     margin-bottom: 30px;
+    .label {
+      font-size: 14px;
+      .label-icon {
+        margin-right: 4px;
+        font-size: 18px;
+        opacity: 0.6;
+      }
+    }
     .search-form {
       height: 42px;
       border: solid 1px #e1e1e1;
       border-radius: 3px 3px;
     }
     .search-text-form {
-      width: 100%;
+
     }
     .search-price-form {
       display: inline-block;
-      width: 138px;
+      width: 115px;
       font-size: 0.9rem;
     }
+    .search-checkbox {
+      position: relative;
+      display: inline-block;
+      height: 2.5rem;
+      width: 100px;
+      margin-left: 5px;
+      .checkbox {
+        position: absolute;
+        top: 1rem;
+        display: inline-block;
+        transform: scale(1.5);
+        opacity: 0.6;
+      }
+      .check-box-label {
+        position: absolute;
+        left: 25px;
+        display: inline-block;
+        width: 85px;
+        line-height: 3rem;
+        font-size: 0.85rem;
+      }
+      .check-box-label-2 {
+        padding-top: 5px;
+        line-height: 1.2rem;
+      }
+    }
+  }
+}
+.search-result {
+  padding-bottom: 6px;
+  .search-name {
+    margin-left: -5px;
+    font-size: 1.6rem;
+    font-weight: 600;
+    span {
+    font-size: 1rem;
+    font-weight: 500;
+    }
+  }
+  .search-item-count {
+    font-size: 0.8rem;
+    font-weight: 500;
+    opacity: 0.6;
   }
 }

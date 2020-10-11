@@ -17,6 +17,7 @@
 #  shipping_method    :string
 #  shipping_charge    :string
 #  buyed_or_sold_time :datetime
+#  which_sold_item    :string
 #
 
 one:

@@ -1,37 +1,42 @@
 <div id="item-index-wrapper">
   <div class="container">
     <div class="user-box row">
+      
       <div class="col-sm-4">
         <div class="box-1">
-          <div class="search-box">
-            <strong>詳細検索</strong><br><br>
-            <%= search_form_for @search, url: items_path do |f| %>
-            <div class="search-form-box">
-              <div class="label"><%= fa_icon "plus" %>キーワードを検索する</div><br>
-              <%= f.text_field :text_cont, class: "search-form search-text-form form-control", placeholder: "例) 値下げ" %>
-            </div>
-            
-            <div class="search-form-box">
-              <div class="label"><%= fa_icon "yen" %>価格</div><br>
-              <%= f.text_field :price_gteq, class: "search-form search-price-form form-control", placeholder: "￥Min" %>&nbsp;~&nbsp;<%= f.text_field :price_lt, class: "search-form search-price-form form-control", placeholder: "￥Max" %>
-            </div>
-            <%= f.submit "完了", class: "form-btn-red" %>
-            <% end %>
-          </div>
+          <%= render 'search_form' %>
         </div>
       </div> 
       
       <div class="col-sm-8">
-        <div class="box-2">
-    <div class="top-box">
-      
-      <div class="index-items row">
-        <%= render 'shared/items' %>
-      </div>
-    </div>
+        <div class="box-2 top-box">
+          <div class="search-result">
+          <% unless params[:q] == nil %>
+            <div class="search-name">
+              <% if params[:q][:name_or_text_cont].present? %>
+              <%= params[:q][:name_or_text_cont] %>&nbsp;<span>の検索結果</span>
+              <% else %>
+              検索結果
+              <% end %>
+            </div>
+            <div class="search-item-count">
+              <% if @search_items.count == 0 %>
+              該当する商品が見つかりません。検索条件を変えて、再度お試しください。
+              <% else %>  
+              1-<%= @search_items.count %>件表示
+              <% end %>
+            </div>
+          <% else %>
+          <div class="search-name">
+            新着商品
+          </div>
+          <% end %>
+          </div>
+          <div class="index-items row">
+            <%= render 'shared/items' %>
+          </div>
         </div>
       </div>
-    
       
     </div>
   </div> 

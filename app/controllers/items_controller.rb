@@ -4,9 +4,13 @@ class ItemsController < ApplicationController
   before_action :set_item, {only: [:show, :edit, :update, :destroy, :buyed]}
   before_action :correct_item_buyer, {only: [:buyed]}
   
+  
   def index
+    if @search_items
        @items = @search_items.order(created_at: :desc)
-      # @items = Item.all.order(created_at: :desc)
+    else   
+       @items = Item.all.order(created_at: :desc)
+    end
   end
   
   
@@ -32,7 +36,7 @@ class ItemsController < ApplicationController
       @item.image = img.original_filename
       File.binwrite("public/item_images/#{@item.image}", img.read)
     end  
-    
+    @item.which_sold_item = "no"
     if @item.save
       redirect_to item_path(@item), notice: "出品しました"
     else
@@ -75,6 +79,7 @@ class ItemsController < ApplicationController
   def buyed
     @item.buyer = @current_user
     @item.buyed_or_sold_time = DateTime.now
+    @item.which_sold_item = "yes"
     @item.save
     redirect_to item_path(@item), notice: "購入しました"
   end
@@ -83,8 +88,9 @@ class ItemsController < ApplicationController
   private
   
   def item_params
-    params.require(:item).permit(:image, :name, :text, :price, :state, :region, :shipping_date, :shipping_method, :shipping_charge, :buyed_or_sold_time)
+    params.require(:item).permit(:image, :name, :text, :price, :state, :region, :shipping_date, :shipping_method, :shipping_charge, :buyed_or_sold_time, :which_sold_item_id)
   end  
+  
   
   def set_item
     @item = Item.find(params[:id])

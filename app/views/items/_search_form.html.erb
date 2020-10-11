@@ -1,0 +1,75 @@
+<div class="search-box">
+  <strong>詳細検索</strong><br><br>
+  <%= search_form_for @search, url: items_path do |f| %>
+  <div class="search-form-box">
+    <div class="label"><%= fa_icon "plus", class: "label-icon" %>キーワードを検索する</div><br>
+    <%= f.text_field :name_or_text_cont, class: "search-form search-text-form form-control", placeholder: "例) 値下げ" %>
+  </div>
+  
+  
+  <div class="search-form-box">
+    <div class="label"><%= fa_icon "yen", class: "label-icon" %>価格</div><br>
+    <%= f.text_field :price_gteq, class: "search-form search-price-form form-control", placeholder: "￥Min" %>&nbsp;~&nbsp;<%= f.text_field :price_lteq, class: "search-form search-price-form form-control", placeholder: "￥Max" %>
+  </div>
+  
+  
+  <div class="search-form-box">
+    <div class="label"><%= fa_icon "star", class: "label-icon" %>商品の状態</div><br>
+    
+    <div class="search-checkbox">
+      <%= f.check_box :state_cont_any, {multiple: true, class: "checkbox"}, "新品未使用", nil %>
+      <div class="check-box-label">新品未使用</div> 
+    </div>
+    &emsp;<div class="search-checkbox">
+      <%= f.check_box :state_cont_any, {multiple: true, class: "checkbox"}, "未使用に近い", nil %>
+      <div class="check-box-label">未使用に近い</div> 
+    </div>
+    <div class="search-checkbox">
+      <%= f.check_box :state_cont_any, {multiple: true, class: "checkbox"}, "目立った傷や汚れなし", nil %>
+      <div class="check-box-label check-box-label-2">目立った傷や汚れなし</div>
+    </div>
+  
+    &emsp;<div class="search-checkbox">
+      <%= f.check_box :state_cont_any, {multiple: true, class: "checkbox"}, "やや傷や汚れあり", nil %>
+      <div class="check-box-label check-box-label-2">やや傷や汚れあり</div>
+    </div>
+    <div class="search-checkbox">
+      <%= f.check_box :state_cont_any, {multiple: true, class: "checkbox"}, "傷や汚れあり", nil %>
+      <div class="check-box-label">傷や汚れあり</div>
+    </div>
+  　<div class="search-checkbox">
+      <%= f.check_box :state_cont_any, {multiple: true, class: "checkbox"}, "全体的に状態が悪い", nil %>
+      <div class="check-box-label check-box-label-2">全体的に状態が悪い</div>
+    </div>
+  </div>
+  
+  
+  <div class="search-form-box">
+    <div class="label"><%= fa_icon "truck", class: "label-icon" %>配送料の負担</div><br>
+    
+    <div class="search-checkbox">
+      <%= f.check_box :shipping_charge_cont_any, {multiple: true, class: "checkbox"}, "送料込み(出品者負担)", nil %>
+      <div class="check-box-label check-box-label-2">送料込み(出品者負担)</div> 
+    </div>
+    <div class="search-checkbox">
+      <%= f.check_box :shipping_charge_cont_any, {multiple: true, class: "checkbox"}, "着払い(購入者負担)", nil %>
+      <div class="check-box-label check-box-label-2">着払い(購入者負担)</div> 
+    </div>
+  </div>
+  
+  
+  <div class="search-form-box">
+    <div class="label"><%= fa_icon "shopping-cart", class: "label-icon" %>販売状況</div><br>
+    
+    <div class="search-checkbox">
+      <%= f.check_box :which_sold_item_cont_any, {multiple: true, class: "checkbox"}, "no", nil %>
+      <div class="check-box-label">販売中</div> 
+    </div>
+    <div class="search-checkbox">
+      <%= f.check_box :which_sold_item_cont_any, {multiple: true, class: "checkbox"}, "yes", nil %>
+      <div class="check-box-label">売り切れ</div> 
+    </div>
+  </div>
+  <%= f.submit "完了", class: "form-btn-red" %>
+  <% end %>
+</div>
