@@ -5,6 +5,8 @@
 
 
 .hero {
+  position: relative;
+  z-index: -1;
   display: block;
   background: center;
   background-size: cover;

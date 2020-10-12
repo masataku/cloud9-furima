@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user, {only: [:index, :show, :edit, :update, :destroy, :logout]}
   before_action :forbid_login_user, {only: [:new, :create, :login_form, :login]}
   before_action :existence_user, {only: [:show, :edit, :update, :destroy]}
-  before_action :ensure_correct_user, {only: [:edit, :update, :destroy]}
+  before_action :ensure_correct_user, {only: [:show, :edit, :update, :destroy]}
   before_action :set_user, {only: [:show, :edit, :update, :destroy, :saling_index, :sold_index, :like_index, :buyed_index, :info_index, :user_page
   ]}
   def index

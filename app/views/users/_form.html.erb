@@ -5,18 +5,18 @@
   <div class="page-container">
     <% if current_page?("/users/#{@user.id}/edit") %>
       <div class="heading">プロフィール</div>
-    <% elsif current_page?(users_addressee_path) %>
+    <% elsif current_page?("/users/#{@user.id}/addressee") %>
       <div class="heading">発送元・お届け先住所変更</div>
-    <% elsif current_page?(users_password_path) %>
+    <% elsif current_page?("/users/#{@user.id}/password") %>
       <div class="heading">メール/パスワード</div>
-    <% elsif current_page?(users_identity_path) %>
+    <% elsif current_page?("/users/#{@user.id}/identity") %>
       <div class="heading">本人情報の登録</div>
     <% end %> 
     
     <%= form_for @user do |f| %>
-      <% if @user.new_record? || current_page?(users_addressee_path) || current_page?(users_password_path) %>
+      <% if @user.new_record? || current_page?("/users/#{@user.id}/addressee") || current_page?("/users/#{@user.id}/password") %>
         <div class="page">  
-          <div class=<%= "edit-container" if current_page?(users_addressee_path) || current_page?(users_password_path) %>>
+          <div class=<%= "edit-container" if current_page?("/users/#{@user.id}/addressee") || current_page?("/users/#{@user.id}/password") %>>
           <% if @user.new_record? %>
             <div class="form-group">
               <div class="label">お名前<div class="mandatory">必須</div></div>
@@ -32,7 +32,7 @@
               <div class="label">生年月日<div class="mandatory">必須</div></div>
               <%= f.text_field :birthday, class: "form-control", placeholder: "例) 2000/01/10" %>
             </div>
-          <% elsif current_page?(users_addressee_path) %>
+          <% elsif current_page?("/users/#{@current_user.id}/addressee") %>
             <div class="form-group">
               <div class="label">お名前<div class="mandatory">必須</div></div>
               <%= f.text_field :last_name, class: "form-control", placeholder: "例) 山田" %><br>
@@ -84,7 +84,7 @@
   
             <%= f.submit "変更する", class: "form-btn-red" %>
             
-          <% elsif current_page?(users_password_path) %>
+          <% elsif current_page?("/users/#{@current_user.id}/password") %>
             <div class="form-group">
               <div class="label">メールアドレス</div>
               <%= f.text_field :email, class: "form-control" %>
@@ -162,7 +162,7 @@
           </div><br>
         </div>
       
-      <% elsif current_page?(users_identity_path) %>
+      <% elsif current_page?("/users/#{@current_user.id}/identity") %>
         <div class="page">  
           <div class="identity-container"><br><br><br>
             お客さまの本人情報をご登録ください。<br>
@@ -216,7 +216,7 @@
               <%= f.text_field :building_name, class: "form-control", placeholder: "例) ハイツ山田101" %>
             </div><br>
           
-          <% if current_page?(users_identity_path) %>
+          <% if current_page?("/users/#{@current_user.id}/identity") %>
             <%= f.submit "登録する", class: "form-btn-red" %>
           <% end %>
           </div>  
