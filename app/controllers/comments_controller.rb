@@ -3,10 +3,12 @@ class CommentsController < ApplicationController
   def create
     @comment = @item.comments.build(user: @current_user)
     @comment.body = comment_params[:body]
+    @like = @item.likes.build(user: @current_user)
     if @comment.save
+      @like.save if @like.valid?
       @item.search_commenter_and_create_notification(@current_user, @comment.id)
       redirect_to @item, notice: "コメントしました"
-    end  
+    end
   end
   
   def destroy

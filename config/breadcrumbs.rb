@@ -6,7 +6,12 @@ end
 #ユーザーページ
 crumb :user_page do |user|
   link user.name, "users/#{params[:id]}/user_page"
-end  
+end 
+
+#お知らせ
+crumb :notification do
+  link "お知らせ", notifications_path
+end
 
 #マイページ
 crumb :mypage do

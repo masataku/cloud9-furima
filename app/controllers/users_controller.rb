@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   
   
   def show
-    @notifications = Notification.all  
+    @notifications = Notification.where(receiver_id: @current_user.id).limit(6)
   end  
   
   
@@ -117,7 +117,7 @@ class UsersController < ApplicationController
   
   # userのitem一覧
   def like_index
-    @items = @current_user.like_items.order(created_at: :desc)
+    @items = @current_user.like_items.limit(100).order(created_at: :desc)
   end
   
   def saling_index

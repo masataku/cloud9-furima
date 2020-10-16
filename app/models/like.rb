@@ -13,5 +13,5 @@ class Like < ApplicationRecord
   belongs_to :user
   belongs_to :item
   
-  
+  validates :user_id && :item_id, uniqueness: true
 end

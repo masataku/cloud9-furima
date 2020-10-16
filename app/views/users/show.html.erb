@@ -23,7 +23,8 @@
           <div class="col-sm-6 bar-type-active">お知らせ</div>
           <div class="col-sm-6">やることリスト</div>
         </div>  
-          <%= render 'notifications/index' %>
+        
+        <%= render 'notifications/index' %>
         
         <!--<% if @user.id == @current_user.id %>-->
         <!--  <%= link_to "情報の編集", edit_user_path(@current_user) %>-->
@@ -36,6 +37,13 @@
         <!--<% if @user.id == @current_user.id %>-->
         <!--  <%= link_to "退会する", user_path(@user), method: :delete, data: {confirm: "ポイント：#{@user.point}Pは消えてしまいます。本当に退会しますか？"} %>-->
         <!--<% end %>-->
+        
+        <div class="btn-box"> 
+        <%= link_to(notifications_path) do %>
+          <div class="form-btn-gray">
+            一覧を見る
+          </div>
+        <% end %>  
         </div>
       </div>
     </div>
