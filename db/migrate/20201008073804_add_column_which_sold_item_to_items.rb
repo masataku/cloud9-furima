@@ -1,5 +1,0 @@
-class AddColumnWhichSoldItemToItems < ActiveRecord::Migration[5.1]
-  def change
-    add_column :items, :which_sold_item, :string
-  end
-end

@@ -1,25 +1,3 @@
-# == Schema Information
-#
-# Table name: items
-#
-#  id                 :integer          not null, primary key
-#  name               :string
-#  text               :text
-#  price              :integer
-#  image              :string
-#  state              :string
-#  region             :string
-#  saler_id           :integer
-#  buyer_id           :integer
-#  created_at         :datetime         not null
-#  updated_at         :datetime         not null
-#  shipping_date      :string
-#  shipping_method    :string
-#  shipping_charge    :string
-#  buyed_or_sold_time :datetime
-#  which_sold_item    :string   "yes" or "no"
-#  tradind            :string   "yes" or "no" or "done"
-#
 class Item < ApplicationRecord
   belongs_to :saler, class_name: "User"
   belongs_to :buyer, optional: true, class_name: "User"
