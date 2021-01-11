@@ -1,4 +1,4 @@
-class CreateNotifications < ActiveRecord::Migration[5.1]
+class CreateNotification < ActiveRecord::Migration[5.1]
   def change
     create_table :notifications do |t|
       t.integer :sender_id
