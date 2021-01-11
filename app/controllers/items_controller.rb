@@ -30,7 +30,6 @@ class ItemsController < ApplicationController
   
   def create
     @item = Item.new(item_params)
-    binding.pry
     @item.saler = @current_user
     img = item_params[:image]
     if !img.nil?
