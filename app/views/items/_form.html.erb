@@ -10,7 +10,7 @@
     </div>
     <div class="page">
 
-    <%= form_with model: @item, url: items_path, local: true do |f| %>
+    <%= form_for @item do |f| %>
     
       <div class="form-group">
         <div class="label">画像<div class="mandatory">必須</div></div>
