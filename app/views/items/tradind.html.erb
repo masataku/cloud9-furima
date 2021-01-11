@@ -1,0 +1,76 @@
+<div class="container">
+  <div class="user-box row">
+      
+    <div class="col-sm-4">
+      <div class="box-1">
+        <strong>取引情報</strong>
+        <table border="1" class="trading-sidebar">
+          <tr>
+            <th><div class="trading-th">商品</div></th>
+            <td>
+              <div class="trading-td">
+              <%= link_to(item_path(@item), class: "trading-item-link") do %>
+              
+                <%= image_tag "/item_images/#{@item.image}", height: "90px" %><br><%= @item.name %><br>¥<%= @item.price %>
+                
+              <% end %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th><div class="trading-th">送料</div></th><td><div class="trading-td"><%= @item.shipping_charge %></div></td>
+          </tr>
+          <tr>
+            <th><div class="trading-th">販売手数料</div></th><td><div class="trading-td">¥<%= @fee %></div></td>
+          </tr>
+          <tr>
+            <th><div class="trading-th">販売利益</div></th><td><div class="trading-td">¥<%= @benefit %></div></td>
+          </tr>
+          <tr>
+            <th><div class="trading-th">購入日時</div></th><td><div class="trading-td"><%= jp_date(@item.buyed_or_sold_time) %></div></td>
+          </tr>
+          <tr>
+            <th><div class="trading-th">お届け先</div></th>
+            <td>
+              <div class="trading-td">
+                〒<%= @item.buyer.postal_code.to_s.insert(3,"-") %><br>
+                <%= @item.buyer.prefecture %><%= @item.buyer.municipality %>
+                <%= @item.buyer.address %><br>
+                <%= @item.buyer.last_name %> <%= @item.buyer.first_name %> 様
+              </div>
+            </td>
+          </tr>
+        </table>
+        <strong>購入者情報</strong>
+        <%= link_to(("/users/#{@item.buyer_id}/user_page"), class: "trading-buyer")do %>
+        <table border="1" class="trading-sidebar">
+          <tr>
+            <th><div class="trading-th"><%= image_tag "/user_images/#{@item.buyer.image}", class: "trading-user-img" %></div></th>
+            <td><div class="trading-td"><strong><%= @item.buyer.name %> さん</strong><%= fa_icon "chevron-right", class: "trading-td-icon" %></div></td>
+          </tr>
+        </table>
+        <% end %>
+      </div>
+    </div>
+    
+    <div class="col-sm-8">
+      <div class="box-2">
+        <div id="trading-wrapper">
+          <h4>取引画面</h4>
+          <div></div>
+          <div class="trading-container">
+            <% if @comments %>
+            <%= render '/comments/index' %>
+            <% end %>
+            <p class="comment-warning">相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。</p>
+            取引メッセージ
+            <% if @comments %>
+            <%= render '/comments/form' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+      
+  </div>
+</div>

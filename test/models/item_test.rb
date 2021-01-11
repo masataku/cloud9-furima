@@ -18,6 +18,7 @@
 #  shipping_charge    :string
 #  buyed_or_sold_time :datetime
 #  which_sold_item    :string
+#  tradind            :string
 #
 require 'test_helper'
 

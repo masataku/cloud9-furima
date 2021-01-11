@@ -16,13 +16,7 @@ end
 #マイページ
 crumb :mypage do
   link "マイページ", user_path
-end  
-
-# #お知らせ
-# crumb :notifications do
-#   link "お知らせ", notifications_path
-#   parent :mypage
-# end  
+end
 
 #いいね一覧
 crumb :like_index do

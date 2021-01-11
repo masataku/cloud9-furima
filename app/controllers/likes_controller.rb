@@ -6,7 +6,7 @@ class LikesController < ApplicationController
     @item.create_notification_like(@current_user)
     respond_to do |format|
       if @like.save
-        format.html{redirect_to item_path(@like.item)}
+        # format.html{redirect_to item_path(@like.item)}
         format.js  
       end  
       
@@ -21,7 +21,6 @@ class LikesController < ApplicationController
     
     
     respond_to do |format|
-      format.html{redirect_to item_path(@like.item)}
       format.js  
     end
   end

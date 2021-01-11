@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources :notifications, only: [:index]
   
   get 'items/:id/buyed' => 'items#buyed'
+  get 'items/:id/tradind' => 'items#tradind'
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

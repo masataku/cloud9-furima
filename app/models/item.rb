@@ -17,7 +17,8 @@
 #  shipping_method    :string
 #  shipping_charge    :string
 #  buyed_or_sold_time :datetime
-#  which_sold_item    :string
+#  which_sold_item    :string   "yes" or "no"
+#  tradind            :string   "yes" or "no" or "done"
 #
 class Item < ApplicationRecord
   belongs_to :saler, class_name: "User"

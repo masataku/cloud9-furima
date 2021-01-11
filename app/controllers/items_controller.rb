@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user
   before_action :ensure_correct_user_of_item, {only:[:edit, :update, :destroy]}
-  before_action :set_item, {only: [:show, :edit, :update, :destroy, :buyed]}
+  before_action :set_item, {only: [:show, :edit, :update, :destroy, :buyed, :trading]}
   before_action :correct_item_buyer, {only: [:buyed]}
   
   
@@ -37,6 +37,7 @@ class ItemsController < ApplicationController
       File.binwrite("public/item_images/#{@item.image}", img.read)
     end  
     @item.which_sold_item = "no"
+    @item.tradind = "no"
     if @item.save
       redirect_to item_path(@item), notice: "出品しました"
     else
@@ -80,15 +81,26 @@ class ItemsController < ApplicationController
     @item.buyer = @current_user
     @item.buyed_or_sold_time = DateTime.now
     @item.which_sold_item = "yes"
+    @item.tradind = "yes"
     @item.save
     redirect_to item_path(@item), notice: "購入しました"
   end
   
   
+  def tradind
+    @fee = @item.price / 10
+    @benefit = @item.price - @fee
+    
+  end  
+  
+  
   private
   
   def item_params
-    params.require(:item).permit(:image, :name, :text, :price, :state, :region, :shipping_date, :shipping_method, :shipping_charge, :buyed_or_sold_time, :which_sold_item_id)
+    params.require(:item).permit(
+      :image, :name, :text, :price, :state, :region, :shipping_date, :shipping_method, 
+      :shipping_charge, :buyed_or_sold_time, :which_sold_item_id, :trading
+      )
   end  
   
   
