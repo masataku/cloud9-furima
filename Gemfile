@@ -34,6 +34,7 @@ gem 'font-awesome-rails'
 gem 'ransack'
 gem 'gretel'
 gem 'pry-rails'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -42,6 +43,8 @@ group :development, :test do
   gem 'byebug', platform: :mri
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3','~> 1.3.6'
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
 end
 
 group :development do

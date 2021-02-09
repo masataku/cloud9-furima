@@ -46,6 +46,5 @@ class User < ApplicationRecord
   validates :name, :password, presence: true
   validates :email, presence: true, uniqueness: true
   validates :text, length: {maximum: 500}
-  # validates :postal_code, length: {is: 7}
  
 end

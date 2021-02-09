@@ -11,14 +11,14 @@
 #  region             :string
 #  saler_id           :integer
 #  buyer_id           :integer
-#  created_at         :datetime         not null
-#  updated_at         :datetime         not null
 #  shipping_date      :string
 #  shipping_method    :string
 #  shipping_charge    :string
-#  buyed_or_sold_time :datetime
 #  which_sold_item    :string
 #  tradind            :string
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  buyed_or_sold_time :datetime
 #
 require 'test_helper'
 
