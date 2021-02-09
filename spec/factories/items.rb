@@ -9,5 +9,6 @@ FactoryBot.define do
     shipping_date {"1~2日で発送"}
     shipping_method {"未定"}
     shipping_charge {"送料込み(出品者負担)"}
+    saler_id {FactoryBot.create(:user).id}
   end
 end

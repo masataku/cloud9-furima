@@ -4,8 +4,8 @@ RSpec.describe Item, type: :model do
   describe "商品出品機能のテスト" do
     before do
       @item = FactoryBot.build(:item)
-      @user = FactoryBot.create(:user)
-      @item.saler = @user
+      # @user = FactoryBot.create(:user)
+      # @item.saler = @user
     end
     context "出品に成功する時" do
       it "name,text,price,image,region,state,shipping_charge,shipping_method,shipping_date.saler_idが空ではない,
