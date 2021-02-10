@@ -46,5 +46,9 @@ class User < ApplicationRecord
   validates :name, :password, presence: true
   validates :email, presence: true, uniqueness: true
   validates :text, length: {maximum: 500}
- 
+  validates :birthday, presence: true
+  validates :real_name, presence: true
+  validates :real_reading, presence: true, format: {
+      with: /\A[\p{katakana} ー－&&[^ -~｡-ﾟ]]+\z/,
+      message: "全角カタカナのみで入力して下さい"}
 end

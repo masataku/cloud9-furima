@@ -6,8 +6,9 @@ RSpec.describe User, type: :model do
       @user = FactoryBot.build(:user)
     end  
     context "作成に成功する時" do
-      it "name,email,passwordが空でない,
-          emailが一意性がある" do
+      it "name,email,password,birthday,real_name,real_readingが空でない,
+          emailが一意性がある,
+          real_readingが全角カタカナ。" do
         expect(@user).to be_valid
       end
     end 
@@ -22,16 +23,51 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Emailを入力してください")
       end 
-      it "passwordが空" do
-        @user.password = nil
-        @user.valid?
-        expect(@user.errors.full_messages).to include("Passwordを入力してください")
-      end 
       it "emailに一意性がない" do
         another_user = FactoryBot.create(:user)
         @user.valid?
         expect(@user.errors.full_messages).to include("Emailはすでに存在します")
       end 
+      it "passwordが空" do
+        @user.password = nil
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Passwordを入力してください")
+      end 
+      it "birthdayが空" do
+        @user.birthday = nil
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Birthdayを入力してください")
+      end  
+      it "real_nameが空" do
+        @user.real_name = nil
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Real nameを入力してください")
+      end
+      it "real_readingが空" do
+        @user.real_reading = nil
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Real readingを入力してください")
+      end
+      it "real_readingが半角カタカナ" do
+        @user.real_reading = "ﾔﾏﾀﾀﾛｳﾞ"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Real reading全角カタカナのみで入力して下さい")
+      end
+      it "real_readingが漢字" do
+        @user.real_reading = "山田太郎"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Real reading全角カタカナのみで入力して下さい")
+      end
+      it "real_readingが平仮名" do
+        @user.real_reading = "やまだたろう"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Real reading全角カタカナのみで入力して下さい")
+      end
+      it "real_readingが全角英語" do
+        @user.real_reading = "ＡＢＣ"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Real reading全角カタカナのみで入力して下さい")
+      end
     end  
   end
   describe "ユーザー編集機能のテスト" do
