@@ -8,6 +8,8 @@ furima
 https://mercari-32994.herokuapp.com/
 
 - テスト用アカウント
+メールアドレス:abc@abc
+パスワード:12345a
 
 - GitHubリポジトリ
 https://github.com/masataku/cloud9-furima
